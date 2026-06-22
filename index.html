@@ -689,24 +689,104 @@
     .cal-confirm-btn:hover { opacity: .88; }
 
     /* ── Produktvalg ── */
-    .produkt-grid { display: flex; flex-direction: column; gap: 12px; }
+    .produkt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
     .produkt-tile {
-      border: 1px solid var(--border-tile);
-      border-radius: var(--r-tile);
-      padding: 16px;
+      border: 3px solid var(--border-subtle);
+      border-radius: 24px;
+      overflow: hidden;
       cursor: pointer;
-      background: #fff;
+      background: var(--bg-elevated);
       box-shadow: 0 0 5px rgba(0,0,0,.15);
-      transition: border .15s, background .15s, box-shadow .15s;
+      transition: border .15s, box-shadow .15s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .produkt-tile:hover {
+      border-color: var(--border-bold);
+      box-shadow: 0 0 8px rgba(0,0,0,.2);
+    }
+    .produkt-tile-img-wrap {
+      width: 100%;
+      height: 256px;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      background: #f5f5f5;
     }
-    .produkt-tile:hover { border-color: var(--border-bold); background: var(--bg-selected); box-shadow: none; }
-    .produkt-tile-img { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
-    .produkt-tile-info { flex: 1; }
-    .produkt-tile-navn { font-size: 16px; font-weight: 500; line-height: 20px; color: var(--text); }
-    .produkt-tile-pris { font-size: 14px; line-height: 16px; color: var(--text-subtle); margin-top: 4px; }
+    .produkt-tile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .produkt-tile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      flex: 1;
+    }
+    .produkt-tile-navn {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 24px;
+      color: var(--text);
+      margin: 0;
+    }
+    .produkt-tile-desc {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text);
+      margin: 0;
+    }
+    .produkt-tile-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .produkt-tile-highlight {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text);
+    }
+    .produkt-tile-highlight::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23FF3C3C'/%3E%3Cpath d='M8 12L11 15L16 9' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .produkt-tile-footer {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: auto;
+    }
+    .produkt-tile-priser {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .produkt-tile-pris {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--text);
+    }
 
     /* ── Confirmation screen ── */
     .confirm-screen {
@@ -1888,22 +1968,36 @@
   function renderProduktGrid() {
     const grid = document.getElementById('produkt-grid');
     grid.innerHTML = products.map(p => {
-      let pris = 'Køb fra ';
+      let købPris = 'Køb fra ';
+      let lejePris = 'Lej for ';
       if (p.hasKabelVariants) {
-        pris += p.kabelVariants[0].priser.køb.toLocaleString('da-DK') + ' kr.';
+        købPris += p.kabelVariants[0].priser.køb.toLocaleString('da-DK') + ' kr.';
+        lejePris += p.kabelVariants[0].priser.leje.toLocaleString('da-DK') + ' kr./md.';
       } else if (p.priser) {
-        pris += p.priser.køb.toLocaleString('da-DK') + ' kr.';
+        købPris += p.priser.køb.toLocaleString('da-DK') + ' kr.';
+        lejePris += p.priser.leje.toLocaleString('da-DK') + ' kr./md.';
       } else {
-        pris = '';
+        købPris = '';
+        lejePris = '';
       }
+      const highlights = (p.highlights || []).map(h => `<div class="produkt-tile-highlight">${h}</div>`).join('');
       return `
       <div class="produkt-tile" onclick="selectProduct('${p.id}')">
-        <img class="produkt-tile-img" src="${p.billede}" alt="${p.navn}">
-        <div class="produkt-tile-info">
-          <div class="produkt-tile-navn">${p.navn}</div>
-          <div class="produkt-tile-pris">${pris}</div>
+        <div class="produkt-tile-img-wrap">
+          <img class="produkt-tile-img" src="${p.billede}" alt="${p.navn}">
         </div>
-        <img src="assets/icon-chevron-right.svg" width="24" height="24" alt="">
+        <div class="produkt-tile-content">
+          <h3 class="produkt-tile-navn">${p.navn}</h3>
+          <p class="produkt-tile-desc">${p.description || ''}</p>
+          <div class="produkt-tile-highlights">${highlights}</div>
+          <div class="produkt-tile-footer">
+            <div class="produkt-tile-priser">
+              <div class="produkt-tile-pris">${købPris}</div>
+              <div class="produkt-tile-pris">${lejePris}</div>
+            </div>
+            <button class="btn-primary" style="width: auto; min-width: 120px; margin: 0;">Bestil</button>
+          </div>
+        </div>
       </div>`;
     }).join('');
   }
