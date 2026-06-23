@@ -1691,23 +1691,16 @@
             <img id="godkend-product-img" src="" alt="" style="width:160px; height:auto; margin-bottom:16px;">
           </div>
           <div id="godkend-ladeboks-specs"></div>
-          <button class="godkend-ret" onclick="goTo('screen-finansiering')">
-            <span>Ret</span>
-            <img src="assets/icon-chevron-right.svg" width="16" height="16" alt="">
-          </button>
+          <p class="godkend-terms" style="font-size:12px; color:var(--text-subtle); line-height:18px; margin-top:16px;">
+            Der gælder en 6 måneders bindingsperiode. Aftalen kan opsiges til udgangen af en måned med en måneds varsel. Tidligste dato for ophør af aftalen er 31.12.2026. Hvis ladeboksen ønskes nedtaget inden ophør af aftalen, skal dette meddeles til kundeservice på 89 32 25 33, og der opkræves under alle omstændigheder abonnementsbetaling til aftalens ophør.
+          </p>
         </div>
 
         <hr class="godkend-divider">
 
         <!-- ELAFTALEN SECTION -->
         <div class="godkend-section" id="godkend-elaftale" style="display:none;">
-          <div class="godkend-section-header">
-            <h3 class="godkend-section-title">Elaftalen</h3>
-            <button class="godkend-ret" onclick="goTo('screen-finansiering')">
-              <span>Ret</span>
-              <img src="assets/icon-chevron-right.svg" width="16" height="16" alt="">
-            </button>
-          </div>
+          <h3 class="godkend-section-title" style="margin-bottom:16px;">Elaftalen</h3>
           <div id="godkend-elaftale-specs"></div>
         </div>
 
@@ -1715,13 +1708,7 @@
 
         <!-- DINE OPLYSNINGER SECTION -->
         <div class="godkend-section">
-          <div class="godkend-section-header">
-            <h3 class="godkend-section-title">Dine oplysninger</h3>
-            <button class="godkend-ret" onclick="goTo('screen-personlige')">
-              <span>Ret</span>
-              <img src="assets/icon-chevron-right.svg" width="16" height="16" alt="">
-            </button>
-          </div>
+          <h3 class="godkend-section-title" style="margin-bottom:16px;">Dine oplysninger</h3>
           <div id="godkend-oplysninger-rows"></div>
         </div>
 
@@ -1729,18 +1716,12 @@
 
         <!-- BETALINGSOPLYSNINGER SECTION -->
         <div class="godkend-section">
-          <div class="godkend-section-header">
-            <h3 class="godkend-section-title">Betalingsoplysninger</h3>
-            <button class="godkend-ret" onclick="goTo('screen-betaling')">
-              <span>Ret</span>
-              <img src="assets/icon-chevron-right.svg" width="16" height="16" alt="">
-            </button>
-          </div>
+          <h3 class="godkend-section-title" style="margin-bottom:16px;">Betalingsoplysninger</h3>
           <div id="godkend-betaling-specs"></div>
         </div>
 
         <!-- CHECKBOXES -->
-        <div style="margin-top:24px;">
+        <div style="margin-top:40px; display:flex; flex-direction:column; gap:24px;">
           <label class="check-item">
             <input type="checkbox" class="check-box" id="godkend-cb-ladeboks">
             <span class="check-label">Jeg accepterer betingelserne for opsætning og leje af ladeboks</span>
@@ -2752,6 +2733,13 @@
     const addr = [gade, postnr, by].filter(Boolean).join(', ');
     if (addr) specs.push({ label: 'Leveringsadresse', value: addr });
 
+    // Bindingsperiodens udløb (6 måneder fra nu)
+    const today = new Date();
+    const bindingEnd = new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
+    const months = ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'];
+    const bindingDateStr = bindingEnd.getDate() + '. ' + months[bindingEnd.getMonth()] + ' ' + bindingEnd.getFullYear();
+    specs.push({ label: 'Bindingsperiodens udløb', value: bindingDateStr });
+
     document.getElementById('godkend-ladeboks-specs').innerHTML = specs.map(s =>
       `<div class="spec-row"><span>${s.label}</span><span class="spec-val">${s.value}</span></div>`
     ).join('');
@@ -2768,8 +2756,17 @@
       divider2.style.display = 'block';
       const elDate = document.getElementById('elaftale-dato')?.textContent || '';
       const elSpecs = [
-        { label: 'Elprodukt', value: 'OK El Højt Forbrug' },
-        { label: 'Aftalens start', value: elDate }
+        { label: 'OK El Højt forbrug med dansk vindstrøm', value: '1,40 kr.' },
+        { label: 'Den rene elpris', value: '93,02 øre/kWh' },
+        { label: 'Pristillæg', value: '0 øre/kWh' },
+        { label: 'Transport og afgifter', value: '40,97 øre/kWh' },
+        { label: 'Fast betaling til distribution - pr. måned', value: '79,79 kr.' },
+        { label: 'Tillæg for Dansk vindstrøm', value: '6 øre/kWh' },
+        { label: 'Abonnement til OK - pr. måned', value: '49 kr.' },
+        { label: 'Oprettelse', value: '0 kr.' },
+        { label: 'Betalingsgebyr', value: '5,50 kr.' },
+        { label: 'Leverancestart', value: elDate },
+        { label: 'Kampagne', value: 'Velkomstrabat - 500 kr.' }
       ];
       document.getElementById('godkend-elaftale-specs').innerHTML = elSpecs.map(s =>
         `<div class="spec-row"><span>${s.label}</span><span class="spec-val">${s.value}</span></div>`
