@@ -71,7 +71,7 @@
     "id": "domo",
     "navn": "Domo",
     "billede": "assets/domo-black.png",
-    "billede_produktvalg": "assets/domo-productcard.png",
+    "billede_produktvalg": "https://www.ok.dk/imagevault/publishedmedia/tedd0h0of7gb0sj2mccb/ladeboks-paa-mur.png",
     "description": "11 kW ladeboks uden fast kabel. Smart opladning med OK-appen eller ladebrik.",
     "highlights": [
       "Dansk designet og produceret",

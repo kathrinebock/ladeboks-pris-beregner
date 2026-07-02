@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bestil ladeboks – OK</title>
+  <title>Beregn ladebokspris – OK</title>
   <style>
     @font-face {
       font-family: 'OK family';
@@ -103,12 +103,12 @@
     }
     @media (min-width: 768px) {
       .screen-inner {
-        padding-left: 128px;
-        padding-right: 128px;
+        padding-left: 96px;
+        padding-right: 96px;
       }
       .progress {
-        margin-left: -96px;
-        margin-right: -96px;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
     .screen-inner.center { align-items: center; }
@@ -166,7 +166,7 @@
     .option-tiles { display: flex; flex-direction: column; gap: 12px; }
 
     .option-tile {
-      border: 1px solid var(--border-tile);
+      border: 2px solid var(--border-tile);
       border-radius: var(--r-tile);
       padding: 16px;
       cursor: pointer;
@@ -178,7 +178,7 @@
     .option-tile.selected {
       border: 2px solid var(--border-bold);
       background: var(--bg-selected);
-      box-shadow: none;
+      box-shadow: inset 0 0 0 1px var(--border-bold);
     }
     .tile-title {
       font-size: 16px;
@@ -305,6 +305,51 @@
     }
     .btn-link:hover { text-decoration: underline; }
 
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 40px;
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--border-bold);
+      border-radius: var(--r-btn);
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-secondary-icon {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .summary-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @media (min-width: 768px) {
+      .btn-secondary,
+      .summary-actions .btn-primary {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* ── Color swatches ── */
     .swatches { display: flex; gap: 12px; }
     .swatch {
@@ -427,21 +472,112 @@
     }
 
     /* ── Product card (opsummering) ── */
+    #screen-opsummering .screen-inner {
+      align-items: center;
+      gap: 48px;
+      padding-top: 70px;
+    }
+    #screen-opsummering .progress,
+    #screen-opsummering h2 {
+      width: 100%;
+    }
+    #screen-opsummering h2 {
+      font-size: 32px;
+      line-height: 40px;
+    }
+    .summary-price-overview {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+    .summary-price-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+    }
+    .summary-price-line span:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
     .product-card {
-      border: 2px solid var(--border-subtle);
+      width: 100%;
+      border: 1px solid var(--border-subtle);
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 0 5px rgba(0,0,0,.15);
+      background: #fff;
+      padding: 0 24px 24px;
     }
     .product-card-img-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px 24px 8px;
+      height: 159px;
+      padding: 16px 0;
     }
-    .product-card-img { display: block; width: 90px; height: auto; }
-    .product-card-content { padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 8px; }
-    .card-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .product-card-img {
+      display: block;
+      width: 115px;
+      max-height: 127px;
+      height: auto;
+      object-fit: contain;
+    }
+    .product-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 0;
+      width: 100%;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .product-card-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+    }
+    .summary-spec-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+    }
+    .summary-spec-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--text);
+    }
+    .summary-spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 16px;
+      line-height: 20px;
+      color: var(--text);
+    }
+    .summary-spec-row span:last-child {
+      flex-shrink: 0;
+      text-align: right;
+      white-space: nowrap;
+    }
     .order-row {
       display: flex;
       justify-content: space-between;
@@ -450,6 +586,76 @@
       color: var(--text);
     }
     .order-section { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 8px; }
+    .order-section-inline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-el-info-icon {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: none;
+      color: var(--primary);
+      padding: 0;
+      background: transparent;
+    }
+    .summary-total {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 12px;
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .summary-total .order-row {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+    .summary-note {
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--text-subtle);
+    }
+    .summary-info {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0;
+      padding-top: 12px;
+    }
+    .summary-info-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: none;
+      background: transparent;
+      color: var(--link);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+    .summary-info-toggle img {
+      width: 20px;
+      height: 20px;
+      transition: transform 160ms ease;
+      flex-shrink: 0;
+    }
+    .summary-info.open .summary-info-toggle img { transform: rotate(180deg); }
+    .summary-info-body {
+      display: none;
+      padding-top: 12px;
+    }
+    .summary-info.open .summary-info-body { display: block; }
+    .summary-info a {
+      color: var(--link);
+      font-weight: 600;
+    }
     .foretag-link {
       display: flex;
       align-items: center;
@@ -459,32 +665,41 @@
       font-weight: 500;
       cursor: pointer;
       justify-content: flex-end;
-      margin-top: 8px;
+      margin-top: 0;
+    }
+    .summary-actions {
+      width: 100%;
+      gap: 16px;
+    }
+    #screen-opsummering .summary-actions .btn-primary,
+    #screen-opsummering .summary-actions .btn-secondary {
+      width: 100%;
+      height: 36px;
+      min-height: 36px;
+      margin-left: 0;
+      margin-right: 0;
     }
     @media (min-width: 768px) {
-      .product-card { display: flex; flex-direction: row; align-items: stretch; }
-      .product-card-img-wrap {
-        width: 50%;
-        min-height: 308px;
-        flex-shrink: 0;
-        padding: 0;
+      #screen-opsummering .screen-inner {
+        padding-left: 96px;
+        padding-right: 96px;
       }
-      .product-card-img { width: 180px; }
-      .product-card-content {
-        width: 50%;
-        padding: 24px 24px 24px 32px;
-        gap: 0;
-        justify-content: space-between;
+      #screen-opsummering .progress {
+        margin-left: 0;
+        margin-right: 0;
       }
-      .card-title {
-        font-size: 24px;
-        line-height: 24px;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 0;
+      #screen-opsummering .summary-actions {
+        flex-direction: row;
+        justify-content: flex-end;
       }
-      .product-card-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
-      .foretag-link { margin-top: 24px; }
+      #screen-opsummering .summary-actions .btn-primary,
+      #screen-opsummering .summary-actions .btn-secondary {
+        flex: 0 1 260px;
+      }
+      #screen-opsummering .summary-actions .btn-secondary {
+        flex-basis: 360px;
+        white-space: nowrap;
+      }
     }
 
     /* ── Add-on items ── */
@@ -708,66 +923,95 @@
     }
     @media (min-width: 768px) {
       #screen-produktvalg .screen-inner {
-        padding-left: 128px;
-        padding-right: 128px;
+        padding-left: 96px;
+        padding-right: 96px;
       }
     }
     .produkt-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 32px;
     }
     @media (min-width: 768px) {
       .produkt-grid {
-        grid-template-columns: repeat(2, minmax(298px, 1fr));
+        grid-template-columns: 1fr;
       }
     }
     .produkt-tile {
-      border: 3px solid var(--border-subtle);
-      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
-      background: var(--bg-elevated);
+      background: #fff;
       box-shadow: 0 0 5px rgba(0,0,0,.15);
-      transition: border .15s, box-shadow .15s;
+      transition: border-color .15s, box-shadow .15s;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
-    .produkt-tile:hover {
-      border-color: var(--border-bold);
-      box-shadow: 0 0 8px rgba(0,0,0,.2);
+    @media (min-width: 768px) {
+      .produkt-tile {
+        display: grid;
+        grid-template-columns: minmax(220px, 38%) 1fr;
+        min-height: 352px;
+      }
     }
     .produkt-tile-img-wrap {
       width: 100%;
-      height: 256px;
+      min-height: 240px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f5f5f5;
+      background: #f7efeb;
+      padding: 0;
     }
     .produkt-tile-img {
       width: 100%;
       height: 100%;
+      max-height: none;
       object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .produkt-tile-img-wrap {
+        min-height: 100%;
+      }
+      .produkt-tile-img {
+        width: 100%;
+        max-height: none;
+      }
     }
     .produkt-tile-content {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
       padding: 24px;
       flex: 1;
     }
+    @media (min-width: 768px) {
+      .produkt-tile-content {
+        padding: 32px;
+      }
+    }
+    .produkt-tile-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .produkt-tile-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
     .produkt-tile-navn {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 600;
-      line-height: 24px;
+      line-height: 32px;
       color: var(--text);
       margin: 0;
     }
     .produkt-tile-desc {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 20px;
       color: var(--text);
       margin: 0;
@@ -775,23 +1019,26 @@
     .produkt-tile-highlights {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
     .produkt-tile-highlight {
       display: flex;
-      gap: 4px;
+      gap: 8px;
       align-items: center;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 20px;
       color: var(--text);
     }
     .produkt-tile-highlight::before {
       content: '';
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23FF3C3C'/%3E%3Cpath d='M8 12L11 15L16 9' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.55585 3.68508C9.64778 3.23279 10.8181 3 12 3C13.1819 3 14.3522 3.23279 15.4442 3.68508C16.5361 4.13738 17.5282 4.80031 18.364 5.63604C19.1997 6.47177 19.8626 7.46392 20.3149 8.55585C20.7672 9.64778 21 10.8181 21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 10.8181 3.23279 9.64778 3.68508 8.55585C4.13738 7.46392 4.80031 6.47177 5.63604 5.63604C6.47177 4.80031 7.46392 4.13738 8.55585 3.68508ZM12 5C11.0807 5 10.1705 5.18106 9.32122 5.53284C8.47194 5.88463 7.70026 6.40024 7.05025 7.05025C6.40024 7.70026 5.88463 8.47194 5.53284 9.32122C5.18106 10.1705 5 11.0807 5 12C5 12.9193 5.18106 13.8295 5.53284 14.6788C5.88463 15.5281 6.40024 16.2997 7.05025 16.9497C7.70026 17.5998 8.47194 18.1154 9.32122 18.4672C10.1705 18.8189 11.0807 19 12 19C12.9193 19 13.8295 18.8189 14.6788 18.4672C15.5281 18.1154 16.2997 17.5998 16.9497 16.9497C17.5998 16.2997 18.1154 15.5281 18.4672 14.6788C18.8189 13.8295 19 12.9193 19 12C19 11.0807 18.8189 10.1705 18.4672 9.32122C18.1154 8.47194 17.5998 7.70026 16.9497 7.05025C16.2997 6.40024 15.5281 5.88463 14.6788 5.53284C13.8295 5.18106 12.9193 5 12 5ZM15.3738 9.51512C15.7643 9.90564 15.7643 10.5388 15.3738 10.9293L11.8182 14.4849C11.4277 14.8754 10.7945 14.8754 10.404 14.4849L8.62623 12.7071C8.2357 12.3166 8.2357 11.6834 8.62623 11.2929C9.01675 10.9024 9.64992 10.9024 10.0404 11.2929L11.1111 12.3636L13.9596 9.51512C14.3501 9.12459 14.9832 9.12459 15.3738 9.51512Z' fill='%23460019'/%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -799,8 +1046,17 @@
       display: flex;
       gap: 16px;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       margin-top: auto;
+    }
+    @media (max-width: 520px) {
+      .produkt-tile-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .produkt-tile-footer .btn-primary {
+        width: 100% !important;
+      }
     }
     .produkt-tile-priser {
       display: flex;
@@ -808,7 +1064,7 @@
       gap: 4px;
     }
     .produkt-tile-pris {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       line-height: 20px;
       color: var(--text);
@@ -963,7 +1219,105 @@
       align-items: center;
       justify-content: center;
     }
-    .cpr-modal-close:hover { background: var(--bg-selected); border-radius: 50%; }
+    .cpr-modal-close img {
+      width: 16px;
+      height: 16px;
+    }
+    .el-modal-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px;
+      border: 1px solid #ff66ff;
+      border-radius: 999px;
+      background: #ffd8fb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 20px;
+    }
+    .el-modal-subtitle {
+      font-size: 18px;
+      line-height: 24px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .el-modal-desc {
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .el-modal-rows {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 8px;
+    }
+    .el-modal-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 15px;
+      line-height: 20px;
+      color: var(--text);
+    }
+    .el-modal-row strong { font-weight: 600; }
+    .el-modal-row span:last-child { text-align: right; }
+    .el-modal-details-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .el-modal-total {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 22px;
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .callback-modal {
+      max-width: 560px;
+      max-height: 90dvh;
+      overflow-y: auto;
+    }
+    .callback-modal-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .callback-modal-intro p {
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--text);
+    }
+    .callback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .callback-form .btn-primary {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .callback-privacy {
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--text-subtle);
+      margin-top: 4px;
+    }
+    .callback-privacy a {
+      color: var(--link);
+      font-weight: 600;
+    }
 
     /* ══ MOBILE: bottom sheet ══ */
     .bs-sheet {
@@ -1108,7 +1462,7 @@
     ════════════════════════════════════════════ -->
     <div class="screen active" id="screen-produktvalg">
       <div class="screen-inner">
-        <h1>Vælg din ladeboks</h1>
+        <h1>Find den rette ladeløsning til dit behov</h1>
         <div id="produkt-grid" class="produkt-grid"></div>
       </div>
     </div><!-- /screen-produktvalg -->
@@ -1150,29 +1504,29 @@
         <!-- Price -->
         <div id="prod-priser" style="padding:10px 0 0;"></div>
 
-        <button class="btn-primary" onclick="goTo('screen-finansiering')">Vælg ladeboks</button>
+        <button class="btn-primary" onclick="goTo('screen-finansiering')">Videre</button>
 
       </div>
     </div><!-- /screen-produkt -->
 
 
     <!-- ════════════════════════════════════════════
-         SCREEN 1 · FINANSIERING  (1 af 6)
+         SCREEN 1 · PRISVALG  (1 af 3)
     ════════════════════════════════════════════ -->
     <div class="screen" id="screen-finansiering">
       <div class="screen-inner">
 
         <div class="progress">
           <div class="progress-segs">
-            <div class="seg on" onclick="goToStep(1)"></div><div class="seg" onclick="goToStep(2)"></div><div class="seg" onclick="goToStep(3)"></div><div class="seg" onclick="goToStep(4)"></div><div class="seg" onclick="goToStep(5)"></div><div class="seg" onclick="goToStep(6)"></div>
+            <div class="seg on" onclick="goToStep(1)"></div><div class="seg" onclick="goToStep(2)"></div><div class="seg" onclick="goToStep(3)"></div>
           </div>
           <div class="progress-label">
-            <span class="progress-step">1 af 6</span>
-            <span class="progress-name">– Finansiering</span>
+            <span class="progress-step">1 af 3</span>
+            <span class="progress-name">– Prisvalg</span>
           </div>
         </div>
 
-        <h2>Finansiering af din ladeboks</h2>
+        <h2>Beregn prisen på din ladeboks</h2>
 
         <!-- Payment method -->
         <div>
@@ -1190,15 +1544,16 @@
             <div class="option-tile" onclick="pickTile('tiles-payment',this)">
               <div class="tile-title">Køb med serviceaftale</div>
               <div class="tile-desc">
-                <div class="tile-row"><span>Leje og serviceaftale</span><span>49 kr. / md.</span></div>
-                <div class="tile-row"><span>Oprettelse fra</span><span>4.995 kr.</span></div>
+                <div class="tile-row"><span>Serviceaftale</span><span>49 kr. / md.</span></div>
+                <div class="tile-row"><span>Oprettelse fra</span><span id="tile-køb-service-oprettelse">4.995 kr.</span></div>
               </div>
             </div>
 
             <div class="option-tile" onclick="pickTile('tiles-payment',this)">
               <div class="tile-title">Køb uden serviceaftale</div>
               <div class="tile-desc">
-                <div class="tile-row"><span>Oprettelse fra</span><span>4.995 kr.</span></div>
+                <div class="tile-row"><span>Abonnement</span><span>0 kr. / md.</span></div>
+                <div class="tile-row"><span>Oprettelse fra</span><span id="tile-køb-oprettelse">4.995 kr.</span></div>
               </div>
             </div>
 
@@ -1214,7 +1569,7 @@
           </p>
           <div class="option-tiles" id="tiles-elaftale">
 
-            <div class="option-tile selected" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(true); setElaftaleSamlever(true)">
+            <div class="option-tile selected" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(true); updateProductPrices()">
               <div class="tile-title">Ja tak</div>
               <div class="tile-desc">
                 <div class="tile-row"><span>Abonnement</span><span>49 kr. /md.</span></div>
@@ -1222,38 +1577,58 @@
               </div>
             </div>
 
-            <div class="option-tile" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(false); setElaftaleSamlever(true)">
+            <div class="option-tile" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(false); updateProductPrices()">
               <div class="tile-title">Jeg er allerede elkunde</div>
             </div>
 
-            <div class="option-tile" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(false); setElaftaleSamlever(false)">
+            <div class="option-tile" onclick="pickTile('tiles-elaftale',this); setElaftaleInfo(false); updateProductPrices()">
               <div class="tile-title">Nej tak</div>
             </div>
 
           </div>
           <p id="elaftale-info" class="helper" style="margin-top:8px;">Du får vores elaftale <strong>OK El Højt Forbrug</strong>, som passer til kunder med hjemmeladeboks. Din nye elaftale vil træde i kraft <span id="elaftale-dato"></span></p>
-          <div id="elaftale-samlever-wrap" style="display:none; margin-top:16px; flex-direction:column; gap:16px;">
-            <label class="check-item">
-              <input type="checkbox" class="check-box" onchange="toggleElaftaleSamleverFields(this)">
-              <span class="check-label">Min nuværende elaftale står i samlevers navn</span>
-            </label>
-            <div id="elaftale-samlever-fields" style="display:none; flex-direction:column; gap:16px;">
-              <div class="input-group">
-                <label class="input-label">Samlevers navn</label>
-                <input type="text" class="input-field" autocomplete="off">
-              </div>
-              <div class="input-group">
-                <label class="input-label">Samlevers cpr-nr.</label>
-                <input type="text" class="input-field" placeholder="xxxxxx-xxxx" inputmode="numeric" maxlength="11" oninput="formatCpr(this)">
-              </div>
+        </div>
+
+        <button class="btn-primary" onclick="goTo('screen-eksisterende-installation')">Videre</button>
+
+      </div>
+    </div><!-- /screen-finansiering -->
+
+
+    <!-- ════════════════════════════════════════════
+         SCREEN 2 · EKSISTERENDE INSTALLATION  (2 af 3)
+    ════════════════════════════════════════════ -->
+    <div class="screen" id="screen-eksisterende-installation">
+      <div class="screen-inner">
+
+        <div class="progress">
+          <div class="progress-segs">
+            <div class="seg on" onclick="goToStep(1)"></div><div class="seg on" onclick="goToStep(2)"></div><div class="seg" onclick="goToStep(3)"></div>
+          </div>
+          <div class="progress-label">
+            <span class="progress-step">2 af 3</span>
+            <span class="progress-name">– Installation</span>
+          </div>
+        </div>
+
+        <h2>Installation</h2>
+
+        <div>
+          <h4 style="margin-bottom:16px;">Har du en eksisterende installation?</h4>
+          <div class="option-tiles" id="tiles-eksisterende-installation">
+            <div class="option-tile" onclick="pickTile('tiles-eksisterende-installation', this); updateProductPrices()">
+              <div class="tile-title">Ja</div>
+            </div>
+            <div class="option-tile selected" onclick="pickTile('tiles-eksisterende-installation', this); updateProductPrices()">
+              <div class="tile-title">Nej</div>
             </div>
           </div>
         </div>
 
-        <button class="btn-primary" onclick="goTo('screen-eksisterende-boks')">Videre</button>
+        <button class="btn-primary" onclick="goTo('screen-opsummering')">Se din pris</button>
 
       </div>
-    </div><!-- /screen-finansiering -->
+    </div><!-- /screen-eksisterende-installation -->
 
 
     <!-- ════════════════════════════════════════════
@@ -1442,63 +1817,50 @@
 
 
     <!-- ════════════════════════════════════════════
-         SCREEN 3 · OPSUMMERING / DIN BESTILLING  (3 af 6)
+         SCREEN 3 · PRISOVERSIGT  (3 af 3)
     ════════════════════════════════════════════ -->
     <div class="screen" id="screen-opsummering">
       <div class="screen-inner">
 
         <div class="progress">
           <div class="progress-segs">
-            <div class="seg on" onclick="goToStep(1)"></div><div class="seg on" onclick="goToStep(2)"></div><div class="seg on" onclick="goToStep(3)"></div><div class="seg" onclick="goToStep(4)"></div><div class="seg" onclick="goToStep(5)"></div><div class="seg" onclick="goToStep(6)"></div>
+            <div class="seg on" onclick="goToStep(1)"></div><div class="seg on" onclick="goToStep(2)"></div><div class="seg on" onclick="goToStep(3)"></div>
           </div>
           <div class="progress-label">
-            <span class="progress-step">3 af 6</span>
-            <span class="progress-name">– Kurv</span>
+            <span class="progress-step">3 af 3</span>
+            <span class="progress-name">– Prisoversigt</span>
           </div>
         </div>
 
-        <h2>Din bestilling</h2>
+        <h2>Din pris</h2>
+
+        <div class="summary-price-overview" id="summary-price-overview"></div>
 
         <!-- Product card -->
         <div class="product-card">
           <div class="product-card-img-wrap">
-            <img src="assets/charger.png" alt="Domo ladeboks" class="product-card-img">
+            <img id="summary-product-img" src="" alt="" class="product-card-img">
           </div>
           <div class="product-card-content">
             <div>
-              <div class="card-title">Domo ladeboks, sort</div>
-              <div class="product-card-rows">
-                <div class="order-row"><span>Ladeboks</span><span>4.995 kr</span></div>
-                <div class="order-row"><span>Serviceaftale</span><span>69 kr./md.</span></div>
-                <div class="order-row"><span>Standardinstallation</span><span>0 kr</span></div>
-                <div class="order-section">OK Elaftale</div>
-                <div class="order-row"><span>Abonnement</span><span>49 kr./md.</span></div>
-                <div class="order-row"><span>kWh-tillæg</span><span>1,1 kr./kWh.</span></div>
-                <div id="card-kabel9m" class="order-row" style="display:none;"><span>Ekstra ladekabel 9 m</span><span>+ 1.500 kr.</span></div>
+              <div class="card-title" id="summary-title"></div>
+              <div class="product-card-rows" id="summary-rows">
               </div>
             </div>
             <div class="foretag-link" onclick="goTo('screen-finansiering')">
-              Foretag ændringer
+              Ret valg
               <img src="assets/icon-edit.svg" width="20" height="20" alt="">
             </div>
           </div>
         </div>
 
-        <!-- Add-ons -->
-        <div id="addon-section" style="display:none;">
-          <h4 style="margin-bottom:12px;">Har du fået det hele med?</h4>
-          <div class="addon-list">
-            <div class="addon-item">
-              <input type="checkbox" class="check-box" onchange="toggleKabel9m(this)">
-              <div class="addon-info">
-                <div class="addon-title">Ekstra ladekabel 9 meter</div>
-                <div class="addon-price extra">+ 1.500 kr.</div>
-              </div>
-            </div>
-          </div>
+        <div class="summary-actions">
+          <button class="btn-secondary" type="button" onclick="openCallbackModal()">
+            <span class="btn-secondary-icon">?</span>
+            <span>Brug for hjælp? Vi er klar til en snak</span>
+          </button>
+          <button class="btn-primary" type="button">Bestil løsning</button>
         </div>
-
-        <button class="btn-primary" onclick="goTo('screen-personlige')">Videre</button>
 
       </div>
     </div><!-- /screen-opsummering -->
@@ -1796,7 +2158,7 @@
         <div class="bs-cell">Køb <strong>med service­aftale</strong></div>
         <div class="bs-cell">Køb <strong>uden service­aftale</strong></div>
       </div>
-      <div class="bs-row"><div class="bs-label">Månedlig ydelse</div><div class="bs-cell">169 kr.</div><div class="bs-cell">49 kr.</div><div class="bs-cell">–</div></div>
+      <div class="bs-row"><div class="bs-label">Månedlig ydelse</div><div class="bs-cell">169 kr.</div><div class="bs-cell">49 kr.</div><div class="bs-cell">0 kr.</div></div>
       <div class="bs-row"><div class="bs-label">Oprettelse</div><div class="bs-cell" id="cmp-m-leje-opr">895 kr.</div><div class="bs-cell" id="cmp-m-service-opr">4.995 kr.</div><div class="bs-cell" id="cmp-m-køb-opr">4.995 kr.</div></div>
       <div class="bs-row">
         <div class="bs-label">Serviceaftale</div>
@@ -1851,7 +2213,7 @@
         <div class="dm-label">Månedlig ydelse</div>
         <div class="dm-cell featured">169 kr./md.</div>
         <div class="dm-cell">49 kr./md.</div>
-        <div class="dm-cell">—</div>
+        <div class="dm-cell">0 kr./md.</div>
       </div>
 
       <!-- Oprettelse -->
@@ -1947,6 +2309,67 @@
   </div>
 </div>
 
+<!-- ════════════════════════════════════════════
+     MODAL · OK EL HØJT FORBRUG
+════════════════════════════════════════════ -->
+<div id="el-modal-overlay" class="cpr-modal-overlay" onclick="if(event.target === this) closeElModal()">
+  <div class="cpr-modal" role="dialog" aria-modal="true" aria-labelledby="el-modal-title">
+    <button class="cpr-modal-close" onclick="closeElModal()" aria-label="Luk modal">
+      <img src="assets/icon-close.svg" width="24" height="24" alt="">
+    </button>
+    <div class="el-modal-kicker">Mulighed for at vælge Dansk vindstrøm</div>
+    <h2 id="el-modal-title" class="cpr-modal-title">OK El Højt Forbrug</h2>
+    <p class="el-modal-subtitle">Variabel elpris</p>
+    <p class="el-modal-desc">Billigst for dig der har et forbrug over 3.100 kWh årligt.</p>
+
+    <div class="el-modal-rows">
+      <div class="el-modal-row"><span>Pristillæg*</span><span>0 øre/kWh</span></div>
+      <div class="el-modal-row"><span>Abonnement</span><span>49 kr./md.</span></div>
+    </div>
+
+    <div class="el-modal-details-title">kWh-prisen består af</div>
+    <div class="el-modal-rows">
+      <div class="el-modal-row"><span>Den rene elpris</span><span>102,88 øre/kWh</span></div>
+      <div class="el-modal-row"><span>Pristillæg*</span><span>0 øre/kWh</span></div>
+      <div class="el-modal-row"><span>Transport og afgifter</span><span>Afhængig af adresse</span></div>
+      <div class="el-modal-row"><strong>Estimeret kWh-pris</strong><strong>1,03 kr./kWh</strong></div>
+    </div>
+    <div class="el-modal-total">1,03 kr./kWh</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MODAL · RING MIG OP
+════════════════════════════════════════════ -->
+<div id="callback-modal-overlay" class="cpr-modal-overlay" onclick="if(event.target === this) closeCallbackModal()">
+  <div class="cpr-modal callback-modal" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
+    <button class="cpr-modal-close" onclick="closeCallbackModal()" aria-label="Luk modal">
+      <img src="assets/icon-close.svg" width="24" height="24" alt="">
+    </button>
+    <h2 id="callback-modal-title" class="cpr-modal-title">Vil du hellere snakke med os?</h2>
+    <div class="callback-modal-intro">
+      <p>Nogle gange er det bare nemmere at tage en hurtig snak, så du får den ladepakke, der passer lige præcis til dig.</p>
+      <p>Ring til os på telefon <strong>89 32 24 85</strong> eller udfyld formularen herunder.</p>
+    </div>
+    <form class="callback-form" onsubmit="handleCallbackSubmit(event)">
+      <h3 class="order-section" style="margin-top:0;">Ring mig op</h3>
+      <div class="input-group">
+        <label class="input-label" for="callback-name">Navn</label>
+        <input type="text" id="callback-name" class="input-field" autocomplete="name">
+      </div>
+      <div class="input-group">
+        <label class="input-label" for="callback-phone">Telefonnummer</label>
+        <input type="tel" id="callback-phone" class="input-field" autocomplete="tel" placeholder="Telefonnummer">
+      </div>
+      <button class="btn-primary" type="submit">Ring mig op</button>
+      <p class="callback-privacy">
+        OK behandler personoplysninger om dig for at opfylde dit kundeforhold.
+        <a href="https://www.ok.dk/persondatapolitik" target="_blank" rel="noopener">Læs mere om vores behandling af personoplysninger her.</a>
+      </p>
+    </form>
+  </div>
+</div>
+
 <script>
   /* ── Comparison (bottom sheet / modal) ── */
   function openCompare() {
@@ -1971,6 +2394,8 @@
       closeCompare();
       closeCprModal();
       closeStoetteModal();
+      closeElModal();
+      closeCallbackModal();
     }
   });
 
@@ -1992,6 +2417,29 @@
   function closeStoetteModal() {
     document.getElementById('stoette-modal-overlay').classList.remove('open');
     document.body.style.overflow = '';
+  }
+
+  /* ── OK El Modal ── */
+  function openElModal() {
+    document.getElementById('el-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeElModal() {
+    document.getElementById('el-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Callback Modal ── */
+  function openCallbackModal() {
+    document.getElementById('callback-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCallbackModal() {
+    document.getElementById('callback-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleCallbackSubmit(event) {
+    event.preventDefault();
   }
 
   /* ── USP accordion ── */
@@ -2034,11 +2482,8 @@
 
   const STEPS = [
     'screen-finansiering',
-    'screen-installation',
-    'screen-opsummering',
-    'screen-personlige',
-    'screen-fordele',
-    'screen-betaling'
+    'screen-eksisterende-installation',
+    'screen-opsummering'
   ];
   function goToStep(n) { goTo(STEPS[n - 1]); }
 
@@ -2053,7 +2498,7 @@
       if (g.id) tiles[g.id] = [...g.querySelectorAll('.option-tile')].findIndex(t => t.classList.contains('selected'));
     });
     const display = {};
-    ['inst-faktura-fields','inst-dato-field','elaftale-samlever-wrap','elaftale-samlever-fields','elaftale-info'].forEach(id => {
+    ['inst-faktura-fields','inst-dato-field','elaftale-info'].forEach(id => {
       const el = document.getElementById(id);
       if (el) display[id] = el.style.display;
     });
@@ -2088,7 +2533,8 @@
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
-    if (id === 'screen-opsummering') updateAddonSection();
+    if (id === 'screen-finansiering') updateProductPrices();
+    if (id === 'screen-opsummering') updatePriceSummary();
   }
 
   /* ── Option tile radio selection ── */
@@ -2132,7 +2578,7 @@
         købPris = '';
         lejePris = '';
       }
-      const highlights = (p.highlights || []).map(h => `<div class="produkt-tile-highlight">${h}</div>`).join('');
+      const highlights = (p.highlights || []).map(h => `<li class="produkt-tile-highlight">${h}</li>`).join('');
       const billede = p.billede_produktvalg || p.billede;
       return `
       <div class="produkt-tile" onclick="selectProduct('${p.id}')">
@@ -2140,15 +2586,19 @@
           <img class="produkt-tile-img" src="${billede}" alt="${p.navn}">
         </div>
         <div class="produkt-tile-content">
-          <h3 class="produkt-tile-navn">${p.navn}</h3>
-          <p class="produkt-tile-desc">${p.description || ''}</p>
-          <div class="produkt-tile-highlights">${highlights}</div>
+          <div class="produkt-tile-copy">
+            <div class="produkt-tile-title-group">
+              <h3 class="produkt-tile-navn">${p.navn}</h3>
+              <p class="produkt-tile-desc">${p.description || ''}</p>
+            </div>
+            <ul class="produkt-tile-highlights">${highlights}</ul>
+          </div>
           <div class="produkt-tile-footer">
             <div class="produkt-tile-priser">
               <div class="produkt-tile-pris">${købPris}</div>
               <div class="produkt-tile-pris">${lejePris}</div>
             </div>
-            <button class="btn-primary" style="width: auto; min-width: 120px; margin: 0;">Bestil</button>
+            <button class="btn-primary" style="width: auto; min-width: 120px; margin: 0;">Beregn pris</button>
           </div>
         </div>
       </div>`;
@@ -2175,24 +2625,27 @@
       priser = p.priser;
     }
     const pr = document.getElementById('prod-priser');
-    const købPris = priser.oprettelse_køb || priser.køb;
+    const elaftaleIndex = getSelectedTileIndex('tiles-elaftale');
+    const leaseUpfront = getSelectedUpfrontPrice(0, elaftaleIndex);
+    const buyServiceUpfront = getSelectedUpfrontPrice(1, elaftaleIndex);
+    const buyNoServiceUpfront = getSelectedUpfrontPrice(2, elaftaleIndex);
     pr.innerHTML = [
-      købPris  ? `<p class="price-row">Køb fra <strong>${købPris.toLocaleString('da-DK')} kr.</strong></p>` : '',
+      buyNoServiceUpfront ? `<p class="price-row">Køb fra <strong>${buyNoServiceUpfront.toLocaleString('da-DK')} kr.</strong></p>` : '',
       priser.leje ? `<p class="price-row">Lej for <strong>${priser.leje.toLocaleString('da-DK')} kr./md.</strong></p>` : ''
     ].join('');
-    const oKøb = (priser.oprettelse_køb || 0).toLocaleString('da-DK');
-    const oLeje = (priser.oprettelse_leje || 0).toLocaleString('da-DK');
-    const købStr = oKøb + ' kr.';
-    const lejeStr = oLeje === '0' ? 'Inkluderet' : oLeje + ' kr.';
+    const formatUpfront = value => value === 0 ? 'Inkluderet' : value.toLocaleString('da-DK') + ' kr.';
+    const lejeStr = formatUpfront(leaseUpfront);
+    const købServiceStr = formatUpfront(buyServiceUpfront);
+    const købStr = formatUpfront(buyNoServiceUpfront);
     const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
     set('tile-leje-oprettelse', lejeStr);
-    set('tile-køb-service-oprettelse', købStr);
+    set('tile-køb-service-oprettelse', købServiceStr);
     set('tile-køb-oprettelse', købStr);
     set('cmp-m-leje-opr',    lejeStr);
-    set('cmp-m-service-opr', købStr);
+    set('cmp-m-service-opr', købServiceStr);
     set('cmp-m-køb-opr',     købStr);
     set('cmp-d-leje-opr',    lejeStr);
-    set('cmp-d-service-opr', købStr);
+    set('cmp-d-service-opr', købServiceStr);
     set('cmp-d-køb-opr',     købStr);
   }
 
@@ -2278,14 +2731,195 @@
     updateProductPrices();
   }
 
-  function updateAddonSection() {
-    if (!currentProduct) return;
-    const addonSection = document.getElementById('addon-section');
-    if (currentProduct.hasKabelVariants) {
-      addonSection.style.display = '';
-    } else if (currentProduct.hasColorVariants) {
-      addonSection.style.display = 'none';
+  const PRICE_MATRIX = {
+    existing: {
+      domo: {
+        buyNoService: { inclEl: 3995, exclEl: 4995 },
+        buyService: { inclEl: 3995, exclEl: 4995 },
+        lease: { inclEl: 0, exclEl: 895 }
+      },
+      peblar5: {
+        buyNoService: { inclEl: 4995, exclEl: 5995 },
+        buyService: { inclEl: 4995, exclEl: 5995 },
+        lease: { inclEl: 0, exclEl: 1500 }
+      },
+      peblar75: {
+        buyNoService: { inclEl: 5245, exclEl: 6245 },
+        buyService: { inclEl: 5245, exclEl: 6245 },
+        lease: { inclEl: 0, exclEl: 1750 }
+      }
+    },
+    new: {
+      domo: {
+        buyNoService: { inclEl: 4995, exclEl: 5995 },
+        buyService: { inclEl: 4995, exclEl: 5995 },
+        lease: { inclEl: 895, exclEl: 1895 }
+      },
+      peblar5: {
+        buyNoService: { inclEl: 5995, exclEl: 6995 },
+        buyService: { inclEl: 5995, exclEl: 6995 },
+        lease: { inclEl: 1500, exclEl: 2500 }
+      },
+      peblar75: {
+        buyNoService: { inclEl: 6245, exclEl: 7245 },
+        buyService: { inclEl: 6245, exclEl: 7245 },
+        lease: { inclEl: 1750, exclEl: 2750 }
+      }
     }
+  };
+
+  function getSelectedTileIndex(groupId) {
+    const tiles = [...document.querySelectorAll(`#${groupId} .option-tile`)];
+    return Math.max(0, tiles.findIndex(t => t.classList.contains('selected')));
+  }
+
+  function getSelectedProductPriceKey() {
+    if (!currentProduct) return 'domo';
+    if (currentProduct.id === 'domo') return 'domo';
+    const kabelLength = selectedVariants.kabel || currentProduct.kabelVariants?.[0]?.length || '5';
+    return kabelLength === '7,5' ? 'peblar75' : 'peblar5';
+  }
+
+  function hasExistingInstallation() {
+    return getSelectedTileIndex('tiles-eksisterende-installation') === 0;
+  }
+
+  function getSelectedUpfrontPrice(paymentIndex, elaftaleIndex) {
+    const installationKey = hasExistingInstallation() ? 'existing' : 'new';
+    const productKey = getSelectedProductPriceKey();
+    const paymentKeys = ['lease', 'buyService', 'buyNoService'];
+    const elKey = elaftaleIndex === 0 ? 'inclEl' : 'exclEl';
+    return PRICE_MATRIX[installationKey][productKey][paymentKeys[paymentIndex]][elKey];
+  }
+
+  function getSelectedPriceData() {
+    if (!currentProduct) return null;
+    let priser;
+    if (currentProduct.hasKabelVariants) {
+      const kabelLength = selectedVariants.kabel || currentProduct.kabelVariants[0].length;
+      priser = currentProduct.kabelVariants.find(v => v.length === kabelLength).priser;
+    } else {
+      priser = currentProduct.priser;
+    }
+
+    const paymentIndex = getSelectedTileIndex('tiles-payment');
+    const paymentLabels = ['Leje', 'Køb med serviceaftale', 'Køb uden serviceaftale'];
+
+    const elaftaleIndex = getSelectedTileIndex('tiles-elaftale');
+    const elaftaleLabels = ['Ja tak', 'Jeg er allerede elkunde', 'Nej tak'];
+
+    const oprettelse = getSelectedUpfrontPrice(paymentIndex, elaftaleIndex);
+    const ladeboksMonthly = paymentIndex === 0 ? (priser.leje || 0) : paymentIndex === 1 ? 49 : 0;
+    const elaftaleMonthly = elaftaleIndex === 0 ? 49 : 0;
+    const elaftaleDiscount = 0;
+
+    return {
+      paymentLabel: paymentLabels[paymentIndex],
+      elaftaleLabel: elaftaleLabels[elaftaleIndex],
+      existingInstallation: hasExistingInstallation(),
+      oprettelse,
+      ladeboksMonthly,
+      elaftaleMonthly,
+      elaftaleDiscount,
+      upfrontTotal: Math.max(0, oprettelse - elaftaleDiscount),
+      monthlyTotal: ladeboksMonthly + elaftaleMonthly
+    };
+  }
+
+  function getSelectedProductTitle() {
+    if (!currentProduct) return '';
+    const parts = [currentProduct.navn + ' ladeboks'];
+    if (currentProduct.hasColorVariants) {
+      const selectedColor = selectedVariants.color || currentProduct.colorVariants[0].color;
+      const colorLabel = currentProduct.colorVariants.find(c => c.color === selectedColor)?.label || selectedColor;
+      parts.push(colorLabel.toLowerCase());
+    } else if (currentProduct.hasKabelVariants) {
+      const selectedKabel = selectedVariants.kabel || currentProduct.kabelVariants[0].length;
+      parts.push(`fastmonteret kabel ${selectedKabel} m`);
+    }
+    return parts.join(', ');
+  }
+
+  function getSelectedProductImage() {
+    if (!currentProduct) return '';
+    if (currentProduct.hasColorVariants) {
+      const selectedColor = selectedVariants.color || currentProduct.colorVariants[0].color;
+      return currentProduct.colorVariants.find(c => c.color === selectedColor)?.billede || currentProduct.billede;
+    }
+    return currentProduct.billede;
+  }
+
+  function formatKr(value) {
+    return value.toLocaleString('da-DK') + ' kr.';
+  }
+
+  function updatePriceSummary() {
+    const data = getSelectedPriceData();
+    if (!currentProduct || !data) return;
+
+    const img = document.getElementById('summary-product-img');
+    img.src = getSelectedProductImage();
+    img.alt = currentProduct.navn;
+    document.getElementById('summary-title').textContent = getSelectedProductTitle();
+    document.getElementById('summary-price-overview').innerHTML = `
+      <div class="summary-price-line"><span>Betaling nu</span><span>${formatKr(data.upfrontTotal)}</span></div>
+      <div class="summary-price-line"><span>Pr. måned fra</span><span>${formatKr(data.monthlyTotal)}/md.</span></div>
+    `;
+
+    const serviceLabel = data.ladeboksMonthly
+      ? `${formatKr(data.ladeboksMonthly)}/md.`
+      : data.paymentLabel === 'Køb uden serviceaftale'
+        ? 'Nej tak'
+        : '0 kr./md.';
+
+    const rows = [
+      `<div class="summary-spec-group">
+        <div class="summary-spec-row"><span>Aftaletype</span><span>${data.paymentLabel}</span></div>
+        <div class="summary-spec-row"><span>Eksisterende installation</span><span>${data.existingInstallation ? 'Ja' : 'Nej'}</span></div>
+        <div class="summary-spec-row"><span>Oprettelse</span><span>${formatKr(data.oprettelse)}</span></div>
+        <div class="summary-spec-row"><span>Serviceaftale</span><span>${serviceLabel}</span></div>
+        <div class="summary-spec-row"><span>Standardinstallation</span><span>0 kr.</span></div>
+      </div>`,
+      data.elaftaleMonthly ? `<div class="summary-spec-group">
+        <div class="summary-spec-heading">
+          <span>OK El Højt Forbrug</span>
+          <button class="info-icon summary-el-info-icon" type="button" onclick="openElModal()" aria-label="Mere info om OK El Højt Forbrug">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 9C8 8.44771 8.44771 8 9 8H10.5C11.0523 8 11.5 8.44771 11.5 9V14H12C12.5523 14 13 14.4477 13 15C13 15.5523 12.5523 16 12 16H9C8.44771 16 8 15.5523 8 15C8 14.4477 8.44771 14 9 14H9.5V10H9C8.44771 10 8 9.55229 8 9Z" fill="#460019"/>
+              <path d="M11 6C11 6.55228 10.5523 7 10 7C9.44771 7 9 6.55228 9 6C9 5.44772 9.44771 5 10 5C10.5523 5 11 5.44772 11 6Z" fill="#460019"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10ZM10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z" fill="#460019"/>
+            </svg>
+          </button>
+        </div>
+        <div class="summary-spec-row"><span>Abonnement</span><span>${formatKr(data.elaftaleMonthly)}/md.</span></div>
+        <div class="summary-spec-row"><span>Pristillæg</span><span>0 øre/kWh.</span></div>
+        ${data.elaftaleDiscount ? `<div class="summary-spec-row"><span>Elaftale-rabat</span><span>- ${formatKr(data.elaftaleDiscount)}</span></div>` : ''}
+      </div>` : '',
+      `<div class="summary-info">
+        <button class="summary-info-toggle" type="button" aria-expanded="false" onclick="toggleSummaryInfo(this)">
+          <span>Sådan beregner vi prisen</span>
+          <img src="assets/icon-chevron-down.svg" alt="">
+        </button>
+        <div class="summary-info-body">
+          <p class="summary-note">
+            Priserne er baseret på OK's aktuelle priser og inkl. standardinstallation (hvis valgt).
+            Prisen for Peblar-ladeboks inkluderer 5 m. fastmonteret kabel.
+            Prisen for køb af ladeboks er vist uden serviceaftale.
+            Prisen inkluderer ikke strømmen for selve opladningen.
+            <br><br>
+            Tjek vores <a href="https://www.ok.dk/privat/produkter/opladning/hjemme#fordelemedhjemmeopladning" target="_blank" rel="noopener">elbilsberegner</a> for at udregne, hvad det koster at lade bilen op.
+          </p>
+        </div>
+      </div>`
+    ].filter(Boolean);
+
+    document.getElementById('summary-rows').innerHTML = rows.join('');
+  }
+
+  function toggleSummaryInfo(button) {
+    const wrap = button.closest('.summary-info');
+    const isOpen = wrap.classList.toggle('open');
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
 
   loadProducts();
@@ -2295,23 +2929,9 @@
     const d = new Date(); d.setDate(d.getDate() + 15);
     const months = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
     document.getElementById('elaftale-dato').textContent = d.getDate() + '. ' + months[d.getMonth()] + ' ' + d.getFullYear();
-    setElaftaleSamlever(true);
   })();
   function setElaftaleInfo(show) {
     document.getElementById('elaftale-info').style.display = show ? '' : 'none';
-  }
-  function setElaftaleSamlever(show) {
-    const wrap = document.getElementById('elaftale-samlever-wrap');
-    wrap.style.display = show ? 'flex' : 'none';
-    if (!show) {
-      const cb = wrap.querySelector('.check-box');
-      cb.checked = false;
-      document.getElementById('elaftale-samlever-fields').style.display = 'none';
-    }
-  }
-  // formatCpr replaced by fmtCpr above
-  function toggleElaftaleSamleverFields(cb) {
-    document.getElementById('elaftale-samlever-fields').style.display = cb.checked ? 'flex' : 'none';
   }
 
   /* ── Forening søgning ── */
@@ -2630,8 +3250,6 @@
       produkt: document.getElementById('prod-navn')?.textContent?.trim() ?? '',
       betalingsform: tileVal('tiles-payment', ['Leje', 'Køb med serviceaftale', 'Køb uden serviceaftale']),
       elaftale: tileVal('tiles-elaftale', ['Ja tak', 'Jeg er allerede elkunde', 'Nej tak']),
-      samleversNavn: inp('#elaftale-samlever-fields .input-field:first-of-type'),
-      samleversCpr:  inp('#elaftale-samlever-fields .input-field:last-of-type'),
       instalAdresse: adresse(igade, ipostnr, iby),
       fakturaTilAndenAdresse: fakturaChecked,
       fakturaAdresse: adresse(fgade, fpostnr, fby),
@@ -2639,12 +3257,12 @@
       leveringAdresse: adresse(lgade, lpostnr, lby),
       flytning: chk('#screen-installation .check-box:last-of-type'),
       overtagelsesdato: inp('#inst-dato-input'),
+      eksisterendeInstallation: tileVal('tiles-eksisterende-installation', ['Ja', 'Nej']),
       eksisterendeBoks: tileVal('tiles-eksisterende-boks', ['Nej', 'Ja']),
       personlige: { navn: pNavn, telefon: pTlf, email: pEmail, cpr: pCpr },
       forening: inp('#forening-input'),
       coopNr: inp('#screen-fordele .input-field:last-of-type'),
       betalingsservice: { registreringsnummer: regNr, kontonummer: kontoNr },
-      addon9mKabel: chk('#screen-opsummering .addon-item:last-of-type .check-box'),
     };
   }
 
@@ -2712,19 +3330,17 @@
       priser = currentProduct.priser;
     }
 
-    const oprettelse = paymentTiles[0].classList.contains('selected')
-      ? priser.oprettelse_leje || 0
-      : priser.oprettelse_køb || 0;
-    const maanedlig = priser.leje || 0;
+    const paymentIndex = [...paymentTiles].findIndex(tile => tile.classList.contains('selected'));
+    const elaftaleIndex = getSelectedTileIndex('tiles-elaftale');
+    const oprettelse = getSelectedUpfrontPrice(Math.max(0, paymentIndex), elaftaleIndex);
+    const maanedlig = Math.max(0, paymentIndex) === 0
+      ? priser.leje || 0
+      : Math.max(0, paymentIndex) === 1
+        ? 49
+        : 0;
 
     specs.push({ label: 'Oprettelse', value: oprettelse.toLocaleString('da-DK') + ' kr.' });
     specs.push({ label: 'Pr. måned', value: maanedlig.toLocaleString('da-DK') + ' kr./md.' });
-
-    // Ekstra kabel 9m
-    const kabel9m = document.querySelector('input[onchange="toggleKabel9m(this)"]');
-    if (kabel9m && kabel9m.checked) {
-      specs.push({ label: 'Løst kabel', value: '+ 1.500 kr.' });
-    }
 
     // Leveringsadresse
     const gade = document.getElementById('instal-gade')?.value || '';
@@ -2816,11 +3432,6 @@
     document.getElementById('godkend-cb-ladeboks').checked = false;
     document.getElementById('godkend-cb-el').checked = false;
     document.getElementById('godkend-cb-persdata').checked = false;
-  }
-
-  /* ── Add-on: ekstra ladekabel 9m ── */
-  function toggleKabel9m(cb) {
-    document.getElementById('card-kabel9m').style.display = cb.checked ? 'flex' : 'none';
   }
 
   /* ── Restart ── */
