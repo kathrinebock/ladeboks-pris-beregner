@@ -915,6 +915,11 @@
       box-shadow: none !important;
       padding: 0 !important;
     }
+    @media (min-width: 1101px) {
+      .grid-outer:has(#screen-produktvalg.active) .col-content {
+        grid-column: 2 / 12;
+      }
+    }
     #screen-produktvalg .screen-inner {
       padding-left: 32px;
       padding-right: 32px;
@@ -934,7 +939,12 @@
     }
     @media (min-width: 768px) {
       .produkt-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      }
+    }
+    @media (min-width: 1024px) {
+      .produkt-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     .produkt-tile {
@@ -951,9 +961,7 @@
     }
     @media (min-width: 768px) {
       .produkt-tile {
-        display: grid;
-        grid-template-columns: minmax(220px, 38%) 1fr;
-        min-height: 352px;
+        min-height: 100%;
       }
     }
     .produkt-tile-img-wrap {
@@ -971,10 +979,20 @@
       height: 100%;
       max-height: none;
       object-fit: cover;
+      object-position: center;
+      transform: scale(1.24);
+      transform-origin: center;
+    }
+    .produkt-tile--domo .produkt-tile-img {
+      object-position: center;
+      transform: scale(1.72);
+    }
+    .produkt-tile--peblar .produkt-tile-img {
+      transform: scale(1.3);
     }
     @media (min-width: 768px) {
       .produkt-tile-img-wrap {
-        min-height: 100%;
+        min-height: 360px;
       }
       .produkt-tile-img {
         width: 100%;
@@ -1045,7 +1063,7 @@
     .produkt-tile-footer {
       display: flex;
       gap: 16px;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       margin-top: auto;
     }
@@ -1058,18 +1076,6 @@
         width: 100% !important;
       }
     }
-    .produkt-tile-priser {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .produkt-tile-pris {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 20px;
-      color: var(--text);
-    }
-
     /* ── Godkendelse screen ── */
     .godkend-section { display: flex; flex-direction: column; gap: 16px; }
     .godkend-section-header {
@@ -2566,22 +2572,10 @@
   function renderProduktGrid() {
     const grid = document.getElementById('produkt-grid');
     grid.innerHTML = products.map(p => {
-      let købPris = 'Køb fra ';
-      let lejePris = 'Lej for ';
-      if (p.hasKabelVariants) {
-        købPris += p.kabelVariants[0].priser.køb.toLocaleString('da-DK') + ' kr.';
-        lejePris += p.kabelVariants[0].priser.leje.toLocaleString('da-DK') + ' kr./md.';
-      } else if (p.priser) {
-        købPris += p.priser.køb.toLocaleString('da-DK') + ' kr.';
-        lejePris += p.priser.leje.toLocaleString('da-DK') + ' kr./md.';
-      } else {
-        købPris = '';
-        lejePris = '';
-      }
       const highlights = (p.highlights || []).map(h => `<li class="produkt-tile-highlight">${h}</li>`).join('');
       const billede = p.billede_produktvalg || p.billede;
       return `
-      <div class="produkt-tile" onclick="selectProduct('${p.id}')">
+      <div class="produkt-tile produkt-tile--${p.id}" onclick="selectProduct('${p.id}')">
         <div class="produkt-tile-img-wrap">
           <img class="produkt-tile-img" src="${billede}" alt="${p.navn}">
         </div>
@@ -2594,10 +2588,6 @@
             <ul class="produkt-tile-highlights">${highlights}</ul>
           </div>
           <div class="produkt-tile-footer">
-            <div class="produkt-tile-priser">
-              <div class="produkt-tile-pris">${købPris}</div>
-              <div class="produkt-tile-pris">${lejePris}</div>
-            </div>
             <button class="btn-primary" style="width: auto; min-width: 120px; margin: 0;">Beregn pris</button>
           </div>
         </div>
