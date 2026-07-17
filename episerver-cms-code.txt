@@ -1,0 +1,1937 @@
+<section class="page-main__content digi-price-and-product-wrap" id="digi-charger-calc-pakkeguide">
+  <style>
+    
+
+    /* Base */
+    #digi-charger-calc-pakkeguide {
+      font-family: 'Fellix', Arial, sans-serif;
+      width: 100%;
+    }
+    /* Max bredde på hele komponenten */
+    #digi-charger-calc-pakkeguide .digi-container-pakkeguide {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .digi-input-section-pakkeguide {
+      margin-bottom: 0px;
+      text-align: center;
+      font-size: 2rem;
+      margin-top: -50px;
+    }
+
+    .digi-input-section-pakkeguide p {
+        font-size: 22px;  
+    }
+
+    .digi-radio-container-pakkeguide {
+      display: inline-block;
+      position: relative;
+      padding-left: 35px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 2rem;
+      user-select: none;
+    }
+    .digi-radio-container-pakkeguide input { position: absolute; opacity: 0; cursor: pointer; }
+    .digi-checkmark-pakkeguide {
+      position: absolute; top: 0; left: 0;
+      height: 22px; width: 22px; background-color: #F7EFEB;
+      border-radius: 50%; border: 1px solid #460019;
+    }
+    .digi-radio-container-pakkeguide:hover input ~ .digi-checkmark-pakkeguide { background-color: #fff; }
+    .digi-radio-container-pakkeguide input:checked ~ .digi-checkmark-pakkeguide { background-color: #460019; }
+    .digi-checkmark-pakkeguide:after {
+      content: ""; position: absolute; display: none;
+    }
+    .digi-radio-container-pakkeguide input:checked ~ .digi-checkmark-pakkeguide:after {
+      display: block;
+    }
+    .digi-radio-container-pakkeguide .digi-checkmark-pakkeguide:after {
+      top: 6px; left: 6px; width: 8px; height: 8px; border-radius: 50%; background: white;
+    }
+
+    /* Charger selection styles */
+    .digi-charger-selection-container-pakkeguide {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0 60px 0;
+      flex-wrap: wrap;
+    }
+    
+    .digi-charger-option-pakkeguide {
+      flex: 1;
+      max-width: 300px;
+      min-width: 250px;
+    }
+    
+    .digi-charger-radio-container-pakkeguide {
+      display: block;
+      position: relative;
+      background: #F7EFEB;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0;
+    }
+    
+    .digi-charger-radio-container-pakkeguide:hover {
+      border-color: #460019;
+      background: #fff;
+    }
+    
+    .digi-charger-radio-container-pakkeguide input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .digi-charger-radio-container-pakkeguide input:checked ~ .digi-charger-content-pakkeguide {
+      color: #460019;
+    }
+    
+    .digi-charger-radio-container-pakkeguide input:checked + .digi-charger-content-pakkeguide + .digi-charger-checkmark-pakkeguide {
+      background-color: #460019;
+      border-color: #460019;
+    }
+    
+    .digi-charger-radio-container-pakkeguide input:checked + .digi-charger-content-pakkeguide + .digi-charger-checkmark-pakkeguide:after {
+      display: block;
+    }
+    
+    .digi-charger-content-pakkeguide {
+      text-align: center;
+    }
+    
+    .digi-charger-content-pakkeguide h3 {
+      margin: 0 0 10px 0;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #460019;
+    }
+    
+    .digi-charger-content-pakkeguide p {
+      margin: 5px 0;
+      font-size: 1.6rem;
+    }
+    
+    .digi-charger-price-pakkeguide {
+      font-weight: 600;
+      color: #460019;
+    }
+    
+    .digi-charger-checkmark-pakkeguide {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      height: 20px;
+      width: 20px;
+      background-color: #F7EFEB;
+      border-radius: 50%;
+      border: 2px solid #460019;
+    }
+    
+    .digi-charger-checkmark-pakkeguide:after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+    
+    .digi-charger-image-container-pakkeguide {
+      text-align: center;
+      margin: 20px 0;
+      overflow: visible;
+    }
+    
+    .digi-charger-image-pakkeguide {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .digi-btn--primary-pakkeguide {
+      background-color: #460019;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 2rem;
+      border: 0px solid var(--blue-75);
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      #digi-charger-calc-pakkeguide { font-size: 1.2rem; padding: 1rem; }
+    }
+
+    .digi-q4note-pakkeguide {
+      position: relative;
+      text-align: center;
+      margin-top: -40px;
+      margin-bottom: 50px;
+      z-index: 10;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #460019;
+      pointer-events: auto;
+    }
+
+    /* Step-by-step wizard styles */
+    .digi-step-wizard-pakkeguide {
+      position: relative;
+      overflow: hidden;
+      max-width: 610px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .digi-step-container-pakkeguide {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      width: 100%;
+      align-items: flex-start;
+    }
+
+    .digi-step-slide-pakkeguide {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      padding: 20px 20px 80px 20px;
+      box-sizing: border-box;
+    }
+
+    /* Reduce bottom padding for steps with minimal content */
+    .digi-step-slide-pakkeguide[data-step="2"],
+    .digi-step-slide-pakkeguide[data-step="3"], 
+    .digi-step-slide-pakkeguide[data-step="4"],
+    .digi-step-slide-pakkeguide[data-step="5"],
+    .digi-step-slide-pakkeguide[data-step="6"] {
+      padding: 20px 20px 30px 20px;
+    }
+
+    .digi-step-slide-pakkeguide.digi-step-hidden-pakkeguide {
+      display: none !important;
+      width: 0;
+      min-width: 0;
+    }
+
+    /* Progress indicator */
+    .digi-step-progress-pakkeguide {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      color: #666;
+    }
+
+    .digi-progress-bar-pakkeguide {
+      width: 100%;
+      height: 4px;
+      background-color: #eee;
+      border-radius: 2px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .digi-progress-fill-pakkeguide {
+      height: 100%;
+      background-color: #460019;
+      transition: width 0.4s ease;
+      border-radius: 2px;
+    }
+
+    /* Layout: én kolonne som default. Spørgsmål centreret. */
+    .digi-layout-pakkeguide { display: block; }
+    #digi-steps-pakkeguide {
+      max-width: 610px;
+      margin: 0 auto;
+    }
+.digi-subtext-pakkeguide {
+    font-size: 1.6rem !important;
+}
+
+a.digi-btn--primary-pakkeguide:visited {
+    color: white;
+}
+
+/* Clara guided-form styling. Behavioural hooks and calculator logic stay unchanged. */
+#digi-charger-calc-pakkeguide {
+  --digi-content-primary: #23000d;
+  --digi-content-secondary: #4c433e;
+  --digi-surface-primary: #fff;
+  --digi-surface-subtle: #f7efeb;
+  --digi-border-default: #bfb1aa;
+  --digi-border-strong: #460019;
+  --digi-action-primary: #460019;
+  --digi-focus: #ff3c3c;
+  --ok-header-height: 96px;
+  --digi-footer-clearance: clamp(240px, 24vh, 320px);
+  --digi-flow-top-space: 32px;
+  --digi-product-heading-gap: 48px;
+  --digi-product-page-width: 1120px;
+  --digi-flow-page-width: 784px;
+  background: var(--digi-surface-primary);
+  color: #23000d;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--ok-header-height) + var(--digi-footer-clearance));
+  min-height: calc(100dvh - var(--ok-header-height) + var(--digi-footer-clearance));
+  padding-bottom: var(--digi-footer-clearance);
+  font-family: 'Fellix', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+#digi-charger-calc-pakkeguide .digi-container-pakkeguide {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--digi-product-page-width);
+  padding: 40px 0 48px;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-container-pakkeguide {
+  max-width: var(--digi-flow-page-width);
+  padding-top: var(--digi-flow-top-space);
+}
+#digi-charger-calc-pakkeguide .digi-calc-pakkeguide {
+  margin-top: 0 !important;
+}
+#digi-charger-calc-pakkeguide .digi-calc-pakkeguide {
+  margin-top: 0 !important;
+}
+#digi-charger-calc-pakkeguide .digi-product-intro-pakkeguide {
+  display: block;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-product-intro-pakkeguide {
+  display: none;
+}
+#digi-charger-calc-pakkeguide .digi-step-wizard-pakkeguide {
+  display: none;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-step-wizard-pakkeguide {
+  display: flex;
+  max-width: 652px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: visible;
+}
+#digi-charger-calc-pakkeguide .digi-product-intro-pakkeguide > h1 {
+  margin: 0 0 var(--digi-product-heading-gap);
+}
+#digi-charger-calc-pakkeguide .digi-product-intro-copy-pakkeguide {
+  margin: 0 0 32px;
+  color: var(--digi-content-secondary);
+  font-size: 16px;
+  line-height: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-product-grid-pakkeguide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: 48px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#digi-charger-calc-pakkeguide .digi-product-grid-pakkeguide > li {
+  display: flex;
+  min-width: 0;
+}
+#digi-charger-calc-pakkeguide .digi-product-card-pakkeguide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 16px;
+  min-height: 547px;
+  min-width: 0;
+  overflow: hidden;
+  border: 2px solid #e6d9d2;
+  border-radius: 24px;
+  background: var(--digi-surface-primary);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+}
+#digi-charger-calc-pakkeguide .digi-product-media-pakkeguide {
+  position: relative;
+  flex: 0 0 auto;
+  aspect-ratio: 368 / 297;
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+}
+#digi-charger-calc-pakkeguide .digi-product-media-pakkeguide img {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+}
+#digi-charger-calc-pakkeguide .digi-product-card-pakkeguide[data-product="Domo"] .digi-product-media-pakkeguide img {
+  left: 0;
+  object-position: left center;
+}
+#digi-charger-calc-pakkeguide .digi-product-card-pakkeguide[data-product="Peblar"] .digi-product-media-pakkeguide img {
+  right: 0;
+  object-position: right center;
+}
+#digi-charger-calc-pakkeguide .digi-product-content-pakkeguide {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 24px 24px;
+}
+#digi-charger-calc-pakkeguide .digi-product-content-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-product-content-pakkeguide h3,
+#digi-charger-calc-pakkeguide .digi-product-description-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide li {
+  text-align: left !important;
+}
+#digi-charger-calc-pakkeguide .digi-product-content-pakkeguide h3 {
+  margin: 0;
+  color: var(--digi-content-primary);
+  font-family: 'Fellix', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+#digi-charger-calc-pakkeguide .digi-product-description-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-product-price-pakkeguide {
+  margin: 8px 0 0;
+  color: var(--digi-content-primary);
+  font-size: 14px;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-product-price-pakkeguide {
+  font-weight: 600;
+}
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 16px 0 0;
+  padding: 0;
+  color: var(--digi-content-primary);
+  font-size: 14px;
+  line-height: 20px;
+  list-style: none;
+}
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide li {
+  position: relative;
+  min-height: 28px;
+  padding: 4px 0 4px 28px;
+}
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide li::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M7.12987%203.0709C8.03982%202.69399%209.01509%202.5%2010%202.5C10.9849%202.5%2011.9602%202.69399%2012.8701%203.0709C13.7801%203.44781%2014.6069%204.00026%2015.3033%204.6967C15.9997%205.39314%2016.5522%206.21993%2016.9291%207.12987C17.306%208.03982%2017.5%209.01509%2017.5%2010C17.5%2010.9849%2017.306%2011.9602%2016.9291%2012.8701C16.5522%2013.7801%2015.9997%2014.6069%2015.3033%2015.3033C14.6069%2015.9997%2013.7801%2016.5522%2012.8701%2016.9291C11.9602%2017.306%2010.9849%2017.5%2010%2017.5C9.01509%2017.5%208.03982%2017.306%207.12987%2016.9291C6.21993%2016.5522%205.39314%2015.9997%204.6967%2015.3033C4.00026%2014.6069%203.44781%2013.7801%203.0709%2012.8701C2.69399%2011.9602%202.5%2010.9849%202.5%2010C2.5%209.01509%202.69399%208.03982%203.0709%207.12987C3.44781%206.21993%204.00026%205.39314%204.6967%204.6967C5.39314%204.00026%206.21993%203.44781%207.12987%203.0709ZM10%204.16667C9.23396%204.16667%208.47541%204.31755%207.76768%204.6107C7.05995%204.90386%206.41689%205.33354%205.87521%205.87521C5.33354%206.41689%204.90386%207.05995%204.6107%207.76768C4.31755%208.47541%204.16667%209.23396%204.16667%2010C4.16667%2010.766%204.31755%2011.5246%204.6107%2012.2323C4.90385%2012.9401%205.33353%2013.5831%205.87521%2014.1248C6.41689%2014.6665%207.05995%2015.0961%207.76768%2015.3893C8.47541%2015.6825%209.23396%2015.8333%2010%2015.8333C10.766%2015.8333%2011.5246%2015.6825%2012.2323%2015.3893C12.9401%2015.0961%2013.5831%2014.6665%2014.1248%2014.1248C14.6665%2013.5831%2015.0961%2012.9401%2015.3893%2012.2323C15.6825%2011.5246%2015.8333%2010.766%2015.8333%2010C15.8333%209.23396%2015.6825%208.47541%2015.3893%207.76768C15.0961%207.05995%2014.6665%206.41689%2014.1248%205.87521C13.5831%205.33354%2012.9401%204.90386%2012.2323%204.6107C11.5246%204.31755%2010.766%204.16667%2010%204.16667ZM12.8115%207.92926C13.1369%208.2547%2013.1369%208.78234%2012.8115%209.10777L9.84852%2012.0707C9.52308%2012.3962%208.99544%2012.3962%208.67%2012.0707L7.18852%2010.5893C6.86309%2010.2638%206.86309%209.73618%207.18852%209.41074C7.51396%209.08531%208.0416%209.08531%208.36703%209.41074L9.25926%2010.303L11.633%207.92926C11.9584%207.60383%2012.486%207.60383%2012.8115%207.92926Z%22%20fill%3D%22%23FF3C3C%22%2F%3E%3C%2Fsvg%3E") center / 20px 20px no-repeat;
+}
+#digi-charger-calc-pakkeguide .digi-product-features-pakkeguide li::after {
+  content: none;
+  display: none;
+}
+#digi-charger-calc-pakkeguide .digi-product-select-pakkeguide {
+  align-self: flex-end;
+  width: auto;
+  min-width: 112px;
+  min-height: 36px;
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--digi-action-primary);
+  color: #fff;
+  font-family: 'Fellix', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+}
+#digi-charger-calc-pakkeguide .digi-product-select-pakkeguide:hover {
+  background: var(--digi-action-primary);
+  color: #fff;
+}
+#digi-charger-calc-pakkeguide .digi-step-wizard-pakkeguide,
+#digi-charger-calc-pakkeguide #digi-steps-pakkeguide {
+  width: 100%;
+  max-width: 652px;
+  min-width: 0;
+}
+#digi-charger-calc-pakkeguide .digi-step-progress-pakkeguide {
+  width: 100%;
+  margin: 0;
+}
+#digi-charger-calc-pakkeguide .digi-flow-header-content-pakkeguide {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  margin: 0 0 64px;
+  scroll-margin-top: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-flow-topbar-pakkeguide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-flow-exit-pakkeguide {
+  position: relative;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--digi-action-primary);
+  cursor: pointer;
+}
+#digi-charger-calc-pakkeguide .digi-flow-exit-pakkeguide::before,
+#digi-charger-calc-pakkeguide .digi-flow-exit-pakkeguide::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 5px;
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+#digi-charger-calc-pakkeguide .digi-flow-exit-pakkeguide::before {
+  transform: rotate(45deg);
+}
+#digi-charger-calc-pakkeguide .digi-flow-exit-pakkeguide::after {
+  transform: rotate(-45deg);
+}
+#digi-charger-calc-pakkeguide .digi-progress-bar-pakkeguide {
+  display: grid;
+  grid-template-columns: repeat(var(--digi-progress-count, 5), minmax(0, 1fr));
+  gap: 8px;
+  height: 8px;
+  margin: 0;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+#digi-charger-calc-pakkeguide .digi-progress-fill-pakkeguide {
+  position: absolute;
+  width: 1px !important;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  opacity: 0;
+}
+#digi-charger-calc-pakkeguide .digi-progress-segment-pakkeguide {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: var(--digi-surface-subtle);
+  cursor: default;
+}
+#digi-charger-calc-pakkeguide .digi-progress-segment-pakkeguide.is-complete {
+  background: var(--digi-action-primary);
+}
+#digi-charger-calc-pakkeguide .digi-progress-segment-pakkeguide.is-available {
+  cursor: pointer;
+}
+#digi-charger-calc-pakkeguide .digi-progress-segment-pakkeguide.is-available::after {
+  content: "";
+  position: absolute;
+  inset: -8px 0;
+}
+#digi-charger-calc-pakkeguide .digi-progress-segment-pakkeguide:disabled {
+  opacity: 1;
+}
+#digi-charger-calc-pakkeguide .digi-progress-context-pakkeguide {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  color: var(--digi-content-secondary);
+  font-family: 'Fellix', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-progress-context-pakkeguide strong {
+  color: var(--digi-content-primary);
+  font-weight: 500;
+}
+#digi-charger-calc-pakkeguide .digi-progress-context-pakkeguide span {
+  min-width: 0;
+}
+#digi-charger-calc-pakkeguide .digi-step-container-pakkeguide {
+  min-width: 0;
+}
+#digi-charger-calc-pakkeguide .digi-step-slide-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-step-slide-pakkeguide[data-step] {
+  box-sizing: border-box;
+  min-width: 100%;
+  padding: 0;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-step-container-pakkeguide {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform: none !important;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-step-slide-pakkeguide {
+  display: none !important;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+}
+#digi-charger-calc-pakkeguide.digi-flow-started .digi-step-slide-pakkeguide.is-active-pakkeguide {
+  display: block !important;
+  height: auto;
+  overflow: visible;
+}
+#digi-charger-calc-pakkeguide .digi-input-section-pakkeguide {
+  margin: 0;
+  text-align: left;
+  font-size: 16px;
+}
+#digi-charger-calc-pakkeguide .digi-input-section-pakkeguide > p:first-child {
+  margin: 0;
+  color: var(--digi-content-primary);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+}
+#digi-charger-calc-pakkeguide .digi-subtext-pakkeguide {
+  margin: 8px 0 0;
+  color: var(--digi-content-secondary);
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+#digi-charger-calc-pakkeguide :is(a, button, input):focus-visible,
+#digi-charger-calc-pakkeguide label:has(input:focus-visible) {
+  outline: 3px solid var(--digi-focus);
+  outline-offset: 3px;
+}
+#digi-charger-calc-pakkeguide .digi-charger-selection-container-pakkeguide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0 0;
+}
+#digi-charger-calc-pakkeguide .digi-charger-option-pakkeguide {
+  min-width: 0;
+  max-width: none;
+}
+#digi-charger-calc-pakkeguide .digi-charger-radio-container-pakkeguide {
+  min-height: 0;
+  padding: 16px;
+  border: 1px solid var(--digi-border-default);
+  border-radius: 10px;
+  background: var(--digi-surface-primary);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+  transition: none;
+}
+#digi-charger-calc-pakkeguide .digi-charger-radio-container-pakkeguide:hover {
+  border-color: var(--digi-border-strong);
+  background: var(--digi-surface-primary);
+}
+#digi-charger-calc-pakkeguide .digi-charger-radio-container-pakkeguide:has(input:checked) {
+  border: 2px solid var(--digi-border-strong);
+  padding: 15px;
+  background: var(--digi-surface-subtle);
+}
+#digi-charger-calc-pakkeguide .digi-charger-radio-container-pakkeguide input,
+#digi-charger-calc-pakkeguide .digi-radio-container-pakkeguide input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+#digi-charger-calc-pakkeguide .digi-checkmark-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-charger-checkmark-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-checkmark-pakkeguide::before,
+#digi-charger-calc-pakkeguide .digi-checkmark-pakkeguide::after,
+#digi-charger-calc-pakkeguide .digi-charger-checkmark-pakkeguide::before,
+#digi-charger-calc-pakkeguide .digi-charger-checkmark-pakkeguide::after {
+  display: none !important;
+  content: none !important;
+}
+#digi-charger-calc-pakkeguide .digi-charger-radio-container-pakkeguide input:checked + .digi-charger-content-pakkeguide + .digi-charger-checkmark-pakkeguide {
+  background: #460019;
+  border-color: #460019;
+}
+#digi-charger-calc-pakkeguide .digi-charger-content-pakkeguide {
+  text-align: left;
+}
+#digi-charger-calc-pakkeguide .digi-charger-content-pakkeguide h3 {
+  margin: 0;
+  color: #23000d;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+#digi-charger-calc-pakkeguide .digi-charger-content-pakkeguide p,
+#digi-charger-calc-pakkeguide .digi-input-section-pakkeguide p {
+  font-size: 16px;
+  line-height: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-charger-content-pakkeguide p {
+  margin: 8px 0 0;
+}
+#digi-charger-calc-pakkeguide .digi-charger-image-container-pakkeguide {
+  margin: 24px 0;
+}
+#digi-charger-calc-pakkeguide .digi-charger-image-pakkeguide {
+  max-width: 320px;
+  border-radius: 0;
+}
+#digi-charger-calc-pakkeguide .digi-radio-container-pakkeguide {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  margin: 0 0 12px;
+  padding: 16px;
+  border: 1px solid var(--digi-border-default);
+  border-radius: 10px;
+  background: var(--digi-surface-primary);
+  color: var(--digi-content-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-input-section-pakkeguide > .digi-radio-container-pakkeguide:first-of-type {
+  margin-top: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-radio-container-pakkeguide:hover {
+  border-color: var(--digi-border-strong);
+}
+#digi-charger-calc-pakkeguide .digi-radio-container-pakkeguide:has(input:checked) {
+  border: 2px solid var(--digi-border-strong);
+  padding: 15px;
+  background: var(--digi-surface-subtle);
+}
+#digi-charger-calc-pakkeguide #step-3 .digi-radio-container-pakkeguide {
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 0;
+  margin-bottom: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+}
+#digi-charger-calc-pakkeguide #step-3 .digi-option-title-pakkeguide {
+  flex: 0 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide #step-3 .digi-option-price-pakkeguide {
+  min-width: 0;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: right;
+}
+#digi-charger-calc-pakkeguide .digi-cable-options-pakkeguide {
+  margin-top: 48px;
+}
+#digi-charger-calc-pakkeguide .digi-cable-options-pakkeguide[hidden] {
+  display: none !important;
+}
+#digi-charger-calc-pakkeguide #step-3 .digi-cable-options-pakkeguide > p {
+  margin: 0 0 24px;
+  color: var(--digi-content-primary);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+}
+#digi-charger-calc-pakkeguide .digi-radio-container-pakkeguide.digi-option-expanded-pakkeguide {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+#digi-charger-calc-pakkeguide .digi-option-expanded-pakkeguide .digi-option-title-pakkeguide {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-option-details-pakkeguide {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-option-detail-row-pakkeguide {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+#digi-charger-calc-pakkeguide .digi-step-actions-pakkeguide {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-step-continue-pakkeguide {
+  min-width: 112px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--digi-action-primary);
+  color: #fff;
+  font-family: 'Fellix', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+}
+#digi-charger-calc-pakkeguide .digi-step-continue-pakkeguide:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+#digi-charger-calc-pakkeguide .digi-btn--primary-pakkeguide {
+  min-height: 48px;
+  border-radius: 10px;
+  background: #460019;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+#digi-charger-calc-pakkeguide #step-result,
+#digi-charger-calc-pakkeguide #step-result > h2,
+#digi-charger-calc-pakkeguide #step-result > p,
+#digi-charger-calc-pakkeguide #step-result > div {
+  text-align: left !important;
+}
+#digi-charger-calc-pakkeguide .digi-step-container-pakkeguide {
+  transition: none !important;
+}
+
+#digi-charger-calc-pakkeguide .digi-result-view-pakkeguide {
+  text-align: left !important;
+}
+#digi-charger-calc-pakkeguide #step-result .digi-result-title-pakkeguide {
+  margin: 0 0 32px !important;
+  text-align: left !important;
+}
+#digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 48px;
+}
+#digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide > div,
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide dt,
+#digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide dd {
+  margin: 0;
+  color: var(--digi-content-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+#digi-charger-calc-pakkeguide .digi-result-info-pakkeguide,
+#digi-charger-calc-pakkeguide .digi-result-help-pakkeguide > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+}
+#digi-charger-calc-pakkeguide .digi-result-product-pakkeguide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr);
+  overflow: hidden;
+  border: 1px solid var(--digi-border-default);
+  border-radius: 24px;
+  background: var(--digi-surface-primary);
+  box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+#digi-charger-calc-pakkeguide .digi-result-product-media-pakkeguide {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+#digi-charger-calc-pakkeguide .digi-result-product-media-pakkeguide img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#digi-charger-calc-pakkeguide .digi-result-product-content-pakkeguide {
+  padding: 28px 24px 24px;
+}
+#digi-charger-calc-pakkeguide .digi-result-product-content-pakkeguide h3 {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+}
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide {
+  margin: 0;
+}
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide > div[hidden] {
+  display: none !important;
+}
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide > div {
+  padding: 8px 0;
+  border-bottom: 1px solid #e6d9d2;
+}
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide dt,
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-result-specs-pakkeguide dd {
+  font-weight: 600;
+  text-align: right;
+}
+#digi-charger-calc-pakkeguide .digi-result-actions-pakkeguide {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+#digi-charger-calc-pakkeguide .digi-result-actions-pakkeguide > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin: 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+#digi-charger-calc-pakkeguide .digi-result-help-pakkeguide {
+  gap: 8px;
+  border: 2px solid var(--digi-action-primary);
+  color: var(--digi-action-primary);
+}
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide {
+  margin: 16px 0 32px;
+  border-top: 1px solid #e6d9d2;
+  border-bottom: 1px solid #e6d9d2;
+  background: var(--digi-surface-primary);
+}
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  box-sizing: border-box;
+  gap: 32px;
+  padding: 8px;
+  color: var(--digi-content-primary);
+  font-family: Fellix, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  list-style: none;
+}
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide summary::-webkit-details-marker { display: none; }
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide summary:focus-visible {
+  outline: 2px solid var(--digi-action-primary);
+  outline-offset: 2px;
+}
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide summary::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  margin: 0 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-3px);
+}
+#digi-charger-calc-pakkeguide .digi-price-explanation-pakkeguide[open] summary::after {
+  transform: rotate(225deg) translate(-2px, -1px);
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-pakkeguide {
+  padding: 0 8px 8px;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-pakkeguide > p {
+  margin: 0 0 10px;
+  color: var(--digi-content-secondary);
+  font-family: Fellix, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-pakkeguide > p a {
+  color: var(--digi-content-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-pakkeguide h3 {
+  margin: 20px 0 4px;
+  color: var(--digi-content-primary);
+  font-family: Fellix, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+#digi-charger-calc-pakkeguide #digi-breakdown-monthly-section[hidden] {
+  display: none !important;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-row-pakkeguide {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 0;
+  color: var(--digi-content-primary);
+  font-family: Fellix, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-row-pakkeguide[hidden] {
+  display: none !important;
+}
+#digi-charger-calc-pakkeguide .digi-price-breakdown-row-pakkeguide strong {
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #digi-charger-calc-pakkeguide {
+    --digi-footer-clearance: clamp(160px, 20vh, 220px);
+    padding: 0 0 var(--digi-footer-clearance);
+  }
+  #digi-charger-calc-pakkeguide .digi-container-pakkeguide { padding: 40px 16px 48px; }
+  #digi-charger-calc-pakkeguide .digi-flow-header-content-pakkeguide { margin-bottom: 40px; }
+  #digi-charger-calc-pakkeguide .digi-input-section-pakkeguide > p:first-child { font-size: 20px; line-height: 24px; }
+  #digi-charger-calc-pakkeguide .digi-product-grid-pakkeguide { grid-template-columns: 1fr; gap: 24px; }
+  #digi-charger-calc-pakkeguide .digi-product-card-pakkeguide { min-height: 0; }
+  #digi-charger-calc-pakkeguide .digi-product-content-pakkeguide { min-height: 226px; padding: 0 24px 24px; }
+  #digi-charger-calc-pakkeguide .digi-result-product-pakkeguide { grid-template-columns: 1fr; }
+  #digi-charger-calc-pakkeguide .digi-result-product-media-pakkeguide { min-height: 320px; }
+  #digi-charger-calc-pakkeguide .digi-result-actions-pakkeguide { grid-template-columns: 1fr; }
+  #digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide dt,
+  #digi-charger-calc-pakkeguide .digi-result-prices-pakkeguide dd { font-size: 16px; }
+}
+
+  </style>
+
+  <div class="digi-container-pakkeguide">
+    <div class="digi-calc-pakkeguide">
+      <section class="digi-product-intro-pakkeguide" aria-labelledby="digi-product-heading-pakkeguide">
+        <h1 class="rte-h1" style="text-align: center;" id="digi-product-heading-pakkeguide">Find den rette ladeløsning</h1>
+        <ul class="digi-product-grid-pakkeguide">
+          <li>
+            <article class="digi-product-card-pakkeguide" data-product="Domo">
+              <figure class="digi-product-media-pakkeguide">
+                <img src="https://www.ok.dk/imagevault/publishedmedia/ge62mn9w5obn02ll5jxx/domo-mursten.png" alt="Domo-ladeboks">
+              </figure>
+              <div class="digi-product-content-pakkeguide">
+                <h3>Domo ladeboks</h3>
+                <p class="digi-product-description-pakkeguide">11 kW ladeboks uden kabel. Styr opladning og se forbrug med OK-appen.</p>
+                <ul class="digi-product-features-pakkeguide">
+                  <li>Dansk designet og produceret</li>
+                  <li>Vælg mellem sort eller hvid</li>
+                </ul>
+                <button type="button" class="digi-product-select-pakkeguide" data-charger-value="Domo" aria-label="Beregn pris for Domo-ladeboks">Beregn pris</button>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="digi-product-card-pakkeguide" data-product="Peblar">
+              <figure class="digi-product-media-pakkeguide">
+                <img src="https://www.ok.dk/imagevault/publishedmedia/kdl5jnnf5ze5xgdnhkpo/peblar-sort-v-g.png" alt="Peblar-ladeboks med fastmonteret kabel">
+              </figure>
+              <div class="digi-product-content-pakkeguide">
+                <h3>Peblar ladeboks</h3>
+                <p class="digi-product-description-pakkeguide">11 kW ladeboks med fastmonteret kabel. Styr opladning og se forbrug med OK-appen.</p>
+                <ul class="digi-product-features-pakkeguide">
+                  <li>5 eller 7 meter fastmonteret ladekabel</li>
+                  <li>Produceret i EU</li>
+                </ul>
+                <button type="button" class="digi-product-select-pakkeguide" data-charger-value="Peblar" aria-label="Beregn pris for Peblar-ladeboks">Beregn pris</button>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <div class="digi-layout-pakkeguide">
+        <!-- Venstre område: spørgsmål -->
+        <div class="digi-left-pakkeguide">
+          <div id="digi-steps-pakkeguide" class="digi-step-wizard-pakkeguide">
+            <div class="digi-flow-header-content-pakkeguide">
+              <div class="digi-flow-topbar-pakkeguide">
+                <div class="digi-progress-context-pakkeguide" aria-live="polite"></div>
+                <button type="button" class="digi-flow-exit-pakkeguide" aria-label="Luk prisberegneren"></button>
+              </div>
+              <!-- Progress indicator -->
+              <div class="digi-step-progress-pakkeguide">
+                <div class="digi-progress-bar-pakkeguide" role="navigation" aria-label="Trin i prisberegneren">
+                  <div class="digi-progress-fill-pakkeguide" id="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step container with slides -->
+            <div class="digi-step-container-pakkeguide" id="step-container">
+              <!-- Step 1: Charger Type Selection -->
+              <div class="digi-step-slide-pakkeguide" data-step="1">
+                <div class="digi-input-section-pakkeguide" id="step-1">
+                  <p>Hvilken ladeboks ønsker du?</p>
+                  <p class="digi-subtext-pakkeguide">Domo-ladeboksen er uden kabel. Peblar-ladeboksen er med 5 eller 7 m. fastmonteret kabel (fra +<span id="cable-price-text"></span>)</p>
+                  
+                  <div class="digi-charger-image-container-pakkeguide">
+                    <img src="https://www.ok.dk/imagevault/publishedmedia/u1bn2m1ym7wsqipjmbek/domo-peblar-sort-square.png" alt="Domo og Peblar ladebokse" class="digi-charger-image-pakkeguide">
+                  </div>
+                  
+                  <div class="digi-charger-selection-container-pakkeguide">
+                    <div class="digi-charger-option-pakkeguide">
+                      <label class="digi-charger-radio-container-pakkeguide">
+                        <input type="radio" name="q1" value="Domo" onchange="handleAnswer(1)">
+                        <div class="digi-charger-content-pakkeguide">
+                          <div class="digi-charger-info-pakkeguide">
+                            <h3>Domo</h3>
+                            <p>Uden fastmonteret kabel</p>
+                            <p class="digi-charger-price-pakkeguide">&nbsp;</p>
+                          </div>
+                        </div>
+                        <span class="digi-charger-checkmark-pakkeguide"></span>
+                      </label>
+                    </div>
+                    
+                    <div class="digi-charger-option-pakkeguide">
+                      <label class="digi-charger-radio-container-pakkeguide">
+                        <input type="radio" name="q1" value="Peblar" onchange="handleAnswer(1)">
+                        <div class="digi-charger-content-pakkeguide">
+                          <div class="digi-charger-info-pakkeguide">
+                            <h3>Peblar</h3>
+                            <p>Med fastmonteret kabel</p>
+                            <p class="digi-charger-price-pakkeguide">Fra +<span id="cable-price-charger"></span></p>
+                          </div>
+                        </div>
+                        <span class="digi-charger-checkmark-pakkeguide"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Installation Type -->
+              <div class="digi-step-slide-pakkeguide" data-step="2">
+                <div class="digi-input-section-pakkeguide" id="step-2">
+                  <p>Vil du udskifte en eksisterende ladeboks?</p>
+                  <label class="digi-radio-container-pakkeguide">Ja
+                    <input type="radio" name="q2" value="Ja" onchange="handleAnswer(2)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide">Nej
+                    <input type="radio" name="q2" value="Nej" onchange="handleAnswer(2)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <div class="digi-step-actions-pakkeguide">
+                    <button type="button" class="digi-step-continue-pakkeguide" data-step="2" onclick="continueFromStep(2)" disabled>Videre</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Ownership -->
+              <div class="digi-step-slide-pakkeguide" data-step="3">
+                <div class="digi-input-section-pakkeguide" id="step-3">
+                  <p>Vil du købe eller leje ladeboksen?</p>
+                  <label class="digi-radio-container-pakkeguide">
+                    <input type="radio" name="q3" value="Leje" onchange="handleAnswer(3)">
+                    <span class="digi-option-title-pakkeguide">Leje</span>
+                    <span class="digi-option-price-pakkeguide"><span id="rent-monthly-text"></span> / md. + <span id="rent-startup-text"></span> oprettelse</span>
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide">
+                    <input type="radio" name="q3" value="Eje" onchange="handleAnswer(3)">
+                    <span class="digi-option-title-pakkeguide">Køb</span>
+                    <span class="digi-option-price-pakkeguide"><span id="own-monthly-text"></span> / md. + <span id="own-startup-text"></span> oprettelse</span>
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <div class="digi-cable-options-pakkeguide" id="digi-cable-options" hidden>
+                    <p>Hvor langt kabel ønsker du?</p>
+                    <label class="digi-radio-container-pakkeguide">
+                      <input type="radio" name="qcable" value="5" onchange="handleAnswer('cable')">
+                      <span class="digi-option-title-pakkeguide">5 meter</span>
+                      <span class="digi-option-price-pakkeguide">Inkluderet</span>
+                      <span class="digi-checkmark-pakkeguide"></span>
+                    </label>
+                    <label class="digi-radio-container-pakkeguide">
+                      <input type="radio" name="qcable" value="7" onchange="handleAnswer('cable')">
+                      <span class="digi-option-title-pakkeguide">7 meter</span>
+                      <span class="digi-option-price-pakkeguide">250 kr.</span>
+                      <span class="digi-checkmark-pakkeguide"></span>
+                    </label>
+                  </div>
+                  <div class="digi-step-actions-pakkeguide">
+                    <button type="button" class="digi-step-continue-pakkeguide" data-step="3" onclick="continueFromStep(3)" disabled>Videre</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Warranty Package (conditional) -->
+              <div class="digi-step-slide-pakkeguide digi-step-hidden-pakkeguide" data-step="4">
+                <div class="digi-input-section-pakkeguide" id="step-4">
+                  <p>Ønsker du at tilkøbe serviceaftale til din ladeboks?</p>
+                  <p class="digi-subtext-pakkeguide">Med serviceaftale (<span id="service-monthly-text"></span> pr. måned) får du livstidsgaranti på din ladeboks og 10 % rabat, når du oplader ude.</p>
+                  <label class="digi-radio-container-pakkeguide">Ja
+                    <input type="radio" name="q4" value="Ja" onchange="handleAnswer(4)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide">Nej
+                    <input type="radio" name="q4" value="Nej" onchange="handleAnswer(4)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <div class="digi-step-actions-pakkeguide">
+                    <button type="button" class="digi-step-continue-pakkeguide" data-step="4" onclick="continueFromStep(4)" disabled>Videre</button>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- Step 5: Electricity Contract -->
+              <div class="digi-step-slide-pakkeguide" data-step="5">
+                <div class="digi-input-section-pakkeguide" id="step-5">
+                  <p>Vil du have en OK Elaftale?</p>
+                  <p class="digi-subtext-pakkeguide">Du sparer 1000 kr. når du vælger en OK Elaftale sammen med din ladeboks</p>
+                  <label class="digi-radio-container-pakkeguide digi-option-expanded-pakkeguide" data-calculator-submit="E-mobilitet - ladepakkeguide">
+                    <input type="radio" name="q5" value="Ja" onchange="handleAnswer(5)">
+                    <span class="digi-option-title-pakkeguide">Ja tak</span>
+                    <span class="digi-option-details-pakkeguide">
+                      <span class="digi-option-detail-row-pakkeguide"><span>Abonnement</span><span>49 kr./md.</span></span>
+                      <span class="digi-option-detail-row-pakkeguide"><span>kWh-tillæg</span><span>0 kr./kWh</span></span>
+                    </span>
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide" data-calculator-submit="E-mobilitet - ladepakkeguide">Nej tak
+                    <input type="radio" name="q5" value="Nej" onchange="handleAnswer(5)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide" data-calculator-submit="E-mobilitet - ladepakkeguide">Jeg er allerede elkunde
+                    <input type="radio" name="q5" value="Ja" onchange="handleAnswer(5)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <div class="digi-step-actions-pakkeguide">
+                    <button type="button" class="digi-step-continue-pakkeguide" data-step="5" onclick="continueFromStep(5)" disabled>Videre</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 6: Used Charger (optional) -->
+              <div class="digi-step-slide-pakkeguide" data-step="6">
+                <div class="digi-input-section-pakkeguide" id="step-6">
+                  <p>Vil du vælge en brugt ladeboks?</p>
+                  <p class="digi-subtext-pakkeguide">Du sparer <span id="used-charger-discount-text"></span>, hvis du vælger en brugt ladeboks. <br/>Bemærk at OK ikke altid tilbyder brugte ladebokse - det afhænger af lagerbeholdningen.</p>
+                  <label class="digi-radio-container-pakkeguide">Ja
+                    <input type="radio" name="q6" value="Ja" onchange="handleAnswer(6)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <label class="digi-radio-container-pakkeguide">Nej
+                    <input type="radio" name="q6" value="Nej" onchange="handleAnswer(6)">
+                    <span class="digi-checkmark-pakkeguide"></span>
+                  </label>
+                  <div class="digi-step-actions-pakkeguide">
+                    <button type="button" class="digi-step-continue-pakkeguide" data-step="6" onclick="continueFromStep(6)" disabled>Videre</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result Step -->
+              <div class="digi-step-slide-pakkeguide" data-step="result">
+                <div class="digi-input-section-pakkeguide digi-result-view-pakkeguide" id="step-result">
+                  <h2 class="rte-h1 digi-result-title-pakkeguide">Din pris</h2>
+
+                  <dl class="digi-result-prices-pakkeguide">
+                    <div>
+                      <dt>Startpris (engangsbetaling)</dt>
+                      <dd><span id="price-prefix-startup"></span><span id="digi-startup-price">0</span> kr.</dd>
+                    </div>
+                    <div>
+                      <dt>Fast månedlig pris</dt>
+                      <dd><span id="price-prefix-monthly"></span><span id="digi-monthly-price">0</span> kr./md.</dd>
+                    </div>
+                  </dl>
+
+                  <details class="digi-price-explanation-pakkeguide" id="price-explanation">
+                    <summary>Sådan beregner vi prisen</summary>
+                    <div class="digi-price-breakdown-pakkeguide">
+                      <p>Priserne er baseret på OK's aktuelle priser og inkluderer standardinstallation, når den er valgt. Har du sagt ja til OK el, får du vores elaftale OK El Høj Forbrug, som er billigst for dig, der har en hjemmeladeboks og et forbrug over 3.100 kWh årligt. Strømmen til selve opladningen er ikke inkluderet i prisen. Du kan beregne din elpris med vores <a href="https://www.ok.dk/privat/produkter/el/priser/elprisberegner">Elprisberegner</a>.</p>
+                      <div id="digi-breakdown-monthly-section">
+                        <h3>Fast månedlig pris består af</h3>
+                        <div class="digi-price-breakdown-row-pakkeguide" id="digi-breakdown-base-row">
+                          <span id="digi-breakdown-base-label">Ladeløsning</span>
+                          <strong><span id="digi-breakdown-base-monthly">0</span> kr./md.</strong>
+                        </div>
+                        <div class="digi-price-breakdown-row-pakkeguide" id="digi-breakdown-service-row" hidden>
+                          <span>Serviceaftale</span>
+                          <strong><span id="digi-breakdown-service-monthly">0</span> kr./md.</strong>
+                        </div>
+                        <div class="digi-price-breakdown-row-pakkeguide" id="digi-breakdown-electricity-row" hidden>
+                          <span id="digi-breakdown-electricity-label">OK El Højt Forbrug abonnement</span>
+                          <strong><span id="digi-breakdown-electricity-monthly">0</span> kr./md.</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <article class="digi-result-product-pakkeguide">
+                    <figure class="digi-result-product-media-pakkeguide">
+                      <img id="digi-result-product-image" src="https://www.ok.dk/imagevault/publishedmedia/kdl5jnnf5ze5xgdnhkpo/peblar-sort-v-g.png" alt="Peblar-ladeboks">
+                    </figure>
+                    <div class="digi-result-product-content-pakkeguide">
+                      <h3 id="digi-result-product-name">Peblar</h3>
+                      <dl class="digi-result-specs-pakkeguide">
+                        <div><dt>Producent</dt><dd id="digi-result-spec-manufacturer">Peblar</dd></div>
+                        <div><dt>Produceret i</dt><dd id="digi-result-spec-country">EU</dd></div>
+                        <div><dt>Maksimal effekt</dt><dd>11 kW</dd></div>
+                        <div><dt>Mål (B × H × D)</dt><dd id="digi-result-spec-size">207 × 387 × 128 mm</dd></div>
+                        <div><dt>Fastmonteret kabel</dt><dd id="digi-result-spec-fixed-cable">Ja</dd></div>
+                        <div id="digi-result-spec-cable-length-row"><dt>Kabellængde</dt><dd id="digi-result-spec-cable-length">5 m</dd></div>
+                        <div><dt id="digi-result-spec-connector-label">Ladestik</dt><dd>Type 2</dd></div>
+                      </dl>
+                    </div>
+                  </article>
+
+                  <div class="digi-result-actions-pakkeguide">
+                    <a class="digi-result-help-pakkeguide" href="tel:89322488"><span aria-hidden="true">?</span> Brug for hjælp? Vi er klar til en snak</a>
+                    <a href="#" class="digi-btn--primary-pakkeguide" id="digi-cta-link" target="_blank">Bestil løsning</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="digi-notecontainer-pakkeguide">
+            <div class="digi-q4note-pakkeguide" style="display: none;">Brugt ladeboks kan kun tilvælges sammen med el fra OK</div>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Feature flag: brugt ladeboks
+    const USED_CHARGER_ENABLED = false; // true = vis step 5. false = skjul step 5.
+    
+    // Pricing constants
+    const PRICING_CONFIG = {
+      // Base prices
+      RENT_BASE: {
+        startup: 895,
+        monthly: 169
+      },
+      OWN_BASE: {
+        startup: 4995,
+        monthly: 0
+      },
+      
+      // Add-on prices
+      SERVICE_AGREEMENT_MONTHLY: 49,
+      ELECTRICITY_AGREEMENT_MONTHLY: 49,
+      CABLE_UPGRADE_STARTUP: 1000,
+      CABLE_7M_UPGRADE_STARTUP: 250,
+      NO_ELECTRICITY_STARTUP: 1000,
+      NO_ELECTRICITY_MONTHLY: 50,
+      USED_CHARGER_DISCOUNT: 250,
+      
+      // Rabat på oprettelsespris ved eksisterende installation (eje)
+      EXISTING_INSTALLATION_STARTUP_DISCOUNT: 1000,
+    };
+    
+    // Price formatting helper functions
+    function formatPrice(amount) {
+      return amount.toLocaleString('da-DK');
+    }
+    
+    function formatPriceWithKr(amount) {
+      return formatPrice(amount) + ' kr.';
+    }
+
+    // Step wizard management
+    let currentStep = 1;
+    let maxVisitedStep = 1;
+    const answers = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initUsedChargerAvailability();
+      initStepWizard();
+      populateDynamicPrices(); // Populate price texts from config
+      initPriceAccordionAnimation();
+
+    });
+
+    function initPriceAccordionAnimation() {
+      const details = document.getElementById('price-explanation');
+      if (!details || details.dataset.animationReady === 'true') return;
+      const summary = details.querySelector('summary');
+      const content = details.querySelector('.digi-price-breakdown-pakkeguide');
+      if (!summary || !content) return;
+      details.dataset.animationReady = 'true';
+
+      summary.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (details.dataset.animating === 'true') return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          details.open = !details.open;
+          return;
+        }
+
+        const isClosing = details.open;
+        const startHeight = details.offsetHeight;
+        if (!isClosing) details.open = true;
+        const endHeight = isClosing ? summary.offsetHeight : summary.offsetHeight + content.offsetHeight;
+
+        details.dataset.animating = 'true';
+        details.style.overflow = 'hidden';
+        const animation = details.animate(
+          { height: [`${startHeight}px`, `${endHeight}px`] },
+          { duration: 250, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
+        );
+
+        animation.addEventListener('finish', function() {
+          if (isClosing) details.open = false;
+          details.style.height = '';
+          details.style.overflow = '';
+          details.dataset.animating = 'false';
+        }, { once: true });
+
+        animation.addEventListener('cancel', function() {
+          details.style.height = '';
+          details.style.overflow = '';
+          details.dataset.animating = 'false';
+        }, { once: true });
+      });
+    }
+    
+    function populateDynamicPrices() {
+      // Populate all dynamic price texts from PRICING_CONFIG
+      const setText = (id, text) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = text;
+      };
+      
+      // Cable upgrade price
+      setText('cable-price-text', formatPriceWithKr(PRICING_CONFIG.CABLE_UPGRADE_STARTUP));
+      setText('cable-price-charger', formatPriceWithKr(PRICING_CONFIG.CABLE_UPGRADE_STARTUP));
+      
+      // Rent base prices
+      setText('rent-startup-text', formatPriceWithKr(PRICING_CONFIG.RENT_BASE.startup));
+      setText('rent-monthly-text', formatPriceWithKr(PRICING_CONFIG.RENT_BASE.monthly));
+      
+      // Own base prices
+      setText('own-startup-text', formatPriceWithKr(PRICING_CONFIG.OWN_BASE.startup));
+      setText('own-monthly-text', formatPriceWithKr(PRICING_CONFIG.OWN_BASE.monthly));
+      
+      // Service agreement monthly
+      setText('service-monthly-text', formatPriceWithKr(PRICING_CONFIG.SERVICE_AGREEMENT_MONTHLY));
+      
+      // No electricity startup cost
+      setText('no-electricity-startup-text', formatPriceWithKr(PRICING_CONFIG.NO_ELECTRICITY_STARTUP));
+      
+      // Used charger discount
+      setText('used-charger-discount-text', formatPriceWithKr(PRICING_CONFIG.USED_CHARGER_DISCOUNT));
+      updateOwnershipStartupPrices();
+    }
+
+    function updateOwnershipStartupPrices() {
+      const isPeblar = answers.q1 === 'Peblar';
+      const cableSurcharge = isPeblar
+        ? PRICING_CONFIG.CABLE_UPGRADE_STARTUP + (answers.qcable === '7' ? PRICING_CONFIG.CABLE_7M_UPGRADE_STARTUP : 0)
+        : 0;
+      const rentStartup = document.getElementById('rent-startup-text');
+      const ownStartup = document.getElementById('own-startup-text');
+      if (rentStartup) rentStartup.textContent = formatPriceWithKr(PRICING_CONFIG.RENT_BASE.startup + cableSurcharge);
+      if (ownStartup) ownStartup.textContent = formatPriceWithKr(PRICING_CONFIG.OWN_BASE.startup + cableSurcharge);
+    }
+
+    function qsa(sel) { return document.querySelectorAll(sel); }
+
+    // Step wizard functions
+    function initStepWizard() {
+      updateProgressBar();
+    }
+
+    // *** SERVICEAFTALE STEP TOGGLE ***
+    // Set to true to show the serviceaftale step for 'Eje', false to hide it
+    const SHOW_SERVICEAFTALE_STEP = false;
+    
+    function showStep(stepNumber) {
+      const container = document.getElementById('step-container');
+      const cableOptions = document.getElementById('digi-cable-options');
+      const step4Slide = document.querySelector('.digi-step-slide-pakkeguide[data-step="4"]');
+      const step6Slide = document.querySelector('.digi-step-slide-pakkeguide[data-step="6"]');
+      
+      // Handle step 4 visibility - only show if "Eje" was selected AND feature is enabled
+      const shouldShow4 = SHOW_SERVICEAFTALE_STEP && answers.q3 === 'Eje';
+      if (cableOptions) cableOptions.hidden = answers.q1 !== 'Peblar';
+      if (step4Slide) {
+        if (shouldShow4) {
+          step4Slide.classList.remove('digi-step-hidden-pakkeguide');
+        } else {
+          step4Slide.classList.add('digi-step-hidden-pakkeguide');
+        }
+      }
+      
+      // Handle step 6 visibility
+      const shouldShow6 = USED_CHARGER_ENABLED;
+      if (step6Slide) {
+        if (shouldShow6) {
+          step6Slide.classList.remove('digi-step-hidden-pakkeguide');
+        } else {
+          step6Slide.classList.add('digi-step-hidden-pakkeguide');
+        }
+      }
+      
+      // Get visible slides in order
+      const visibleSlides = getVisibleStepOrder();
+      const targetIndex = visibleSlides.indexOf(stepNumber);
+      
+      if (targetIndex !== -1) {
+        // Apply transform based on visible slides
+        container.style.transform = `translateX(-${targetIndex * 100}%)`;
+      }
+      
+      currentStep = stepNumber;
+      const visibleSteps = getVisibleStepOrder();
+      const currentIndex = visibleSteps.indexOf(stepNumber);
+      maxVisitedStep = Math.max(maxVisitedStep, currentIndex + 1);
+      updateProgressBar();
+      
+      // Handle result step styling and layout
+      const stepWizard = document.querySelector('.digi-step-wizard-pakkeguide');
+      if (stepNumber === 'result') {
+        calculateResult();
+        stepWizard.classList.add('digi-result-step-pakkeguide');
+        triggerSleekNoteOnResult(); // Trigger SleekNote when result is shown
+      } else {
+        stepWizard.classList.remove('digi-result-step-pakkeguide');
+      }
+    }
+
+    function getVisibleStepOrder() {
+      const shouldShow4 = SHOW_SERVICEAFTALE_STEP && answers.q3 === 'Eje';  // Step 4 (warranty) only shown if ownership is "Eje" AND feature enabled
+      const shouldShow6 = USED_CHARGER_ENABLED;  // Step 6 (used charger) based on feature flag
+      
+      let steps = [1, 3];
+      if (shouldShow4) steps.push(4);
+      steps.push(2);
+      steps.push(5);
+      
+      if (shouldShow6) {
+        steps.push(6);
+      }
+      
+      steps.push('result'); // Always add result step at the end
+      
+      return steps;
+    }
+
+    function getNextStep() {
+      const visibleSteps = getVisibleStepOrder();
+      const currentIndex = visibleSteps.indexOf(currentStep);
+      if (currentIndex < visibleSteps.length - 1) {
+        return visibleSteps[currentIndex + 1];
+      }
+      return null;
+    }
+
+    function updateProgressBar() {
+      const visibleSteps = getVisibleStepOrder();
+      const currentIndex = visibleSteps.indexOf(currentStep);
+      const totalSteps = visibleSteps.length;
+      const progress = ((currentIndex + 1) / totalSteps) * 100;
+      document.getElementById('progress-fill').style.width = `${progress}%`;
+    }
+
+    function initUsedChargerAvailability() {
+      const step6Slide = document.querySelector('.digi-step-slide-pakkeguide[data-step="6"]');
+      const note = document.querySelector('.digi-q4note-pakkeguide');
+      if (!step6Slide) return;
+
+      if (USED_CHARGER_ENABLED) {
+        step6Slide.classList.remove('digi-step-hidden-pakkeguide');
+        if (note) note.style.display = 'none';
+        delete answers.q6;
+      } else {
+        step6Slide.classList.add('digi-step-hidden-pakkeguide');
+        step6Slide.querySelectorAll('input').forEach(i => { i.disabled = true; i.checked = false; });
+        if (note) note.style.display = 'none';
+        answers.q6 = 'Nej';
+      }
+    }
+
+    function handleAnswer(step) {
+      const selected = document.querySelector(`input[name="q${step}"]:checked`);
+      if (!selected) return;
+
+      answers[`q${step}`] = selected.value;
+      if (step === 1 || step === 'cable') updateOwnershipStartupPrices();
+      const continueButton = document.querySelector('.digi-step-continue-pakkeguide[data-step="' + step + '"]');
+      if (continueButton) continueButton.disabled = false;
+
+      // Handle special logic for each step
+      if (step === 3) {
+        // Handle question 4 logic based on Eje/Leje choice
+        if (selected.value === 'Leje') {
+          delete answers.q4;
+          answers.q4 = 'Nej'; // Default for leje - skip step 4
+        } else if (selected.value === 'Eje' && !SHOW_SERVICEAFTALE_STEP) {
+          // If serviceaftale step is hidden, don't set a default answer for q4
+          delete answers.q4;
+        }
+        // If "Eje" is selected, we'll navigate to step 4 next (if enabled)
+      } else if (step === 5 && USED_CHARGER_ENABLED) {
+        // Handle Q6 (used charger) logic
+        if (answers.q5 === 'Nej') {
+          answers.q6 = 'Nej';
+          qsa('.digi-q4note-pakkeguide').forEach(n => n.style.display = 'block');
+        } else {
+          qsa('.digi-q4note-pakkeguide').forEach(n => n.style.display = 'none');
+        }
+      }
+
+      if (step === 3 || step === 'cable') updateOwnershipContinueState();
+
+    }
+
+    function updateOwnershipContinueState() {
+      const button = document.querySelector('.digi-step-continue-pakkeguide[data-step="3"]');
+      if (!button) return;
+      button.disabled = !answers.q3 || (answers.q1 === 'Peblar' && !answers.qcable);
+    }
+
+    function continueFromStep(step) {
+      if (!answers[`q${step}`]) return;
+      if (step === 3 && answers.q1 === 'Peblar' && !answers.qcable) return;
+      const nextStep = getNextStep();
+      if (nextStep) showStep(nextStep);
+    }
+
+    function calculateResult() {
+      calculateResultNew();
+    }
+    
+    function calculateResultNew() {
+      // New configurable pricing logic
+      const isRent = answers.q3 === 'Leje';
+      const isOwn = answers.q3 === 'Eje';
+      const hasServiceAgreement = isRent || (isOwn && answers.q4 === 'Ja');
+      const hasCable = answers.q1 === 'Peblar';
+      const cableLength = answers.qcable || '5';
+      const hasElectricity = answers.q5 === 'Ja';
+      const isExistingInstallation = answers.q2 === 'Ja';
+      const effectiveQ6 = USED_CHARGER_ENABLED ? answers.q6 : 'Nej';
+      
+      let startup = 0;
+      let monthly = 0;
+      
+      // Base pricing
+      if (isRent) {
+        startup += PRICING_CONFIG.RENT_BASE.startup;
+        monthly += PRICING_CONFIG.RENT_BASE.monthly;
+      } else if (isOwn) {
+        startup += PRICING_CONFIG.OWN_BASE.startup;
+        monthly += PRICING_CONFIG.OWN_BASE.monthly;
+        
+        // Add service agreement cost if selected for ownership
+        if (hasServiceAgreement) {
+          monthly += PRICING_CONFIG.SERVICE_AGREEMENT_MONTHLY;
+        }
+      }
+      
+      // Add-ons
+      if (hasCable) {
+        startup += PRICING_CONFIG.CABLE_UPGRADE_STARTUP;
+        if (cableLength === '7') startup += PRICING_CONFIG.CABLE_7M_UPGRADE_STARTUP;
+      }
+      
+      if (hasElectricity) {
+        monthly += PRICING_CONFIG.ELECTRICITY_AGREEMENT_MONTHLY;
+      } else {
+        startup += PRICING_CONFIG.NO_ELECTRICITY_STARTUP;
+        if (!isOwn) monthly += PRICING_CONFIG.NO_ELECTRICITY_MONTHLY;
+      }
+      
+      // Rabat ved eksisterende installation (kun eje)
+      if (isExistingInstallation && isOwn) {
+        startup = Math.max(0, startup - PRICING_CONFIG.EXISTING_INSTALLATION_STARTUP_DISCOUNT);
+      }
+      
+      // Used charger discount
+      if (effectiveQ6 === 'Ja') {
+        startup = Math.max(0, startup - PRICING_CONFIG.USED_CHARGER_DISCOUNT);
+      }
+      
+      // Generate link with subscription parameter
+      const link = generateOrderLink();
+      
+      // Update UI
+      document.getElementById('digi-startup-price').textContent = startup.toLocaleString('da-DK');
+      document.getElementById('digi-monthly-price').textContent = monthly.toLocaleString('da-DK');
+      document.getElementById('digi-cta-link').href = link;
+      renderResultProduct();
+      renderPriceBreakdown({ monthly, isRent, isOwn, hasServiceAgreement, hasElectricity });
+      
+      // Add "Fra " prefix if Eje and serviceaftale step is hidden (user hasn't decided yet)
+      const showFromPrefix = isOwn && !SHOW_SERVICEAFTALE_STEP;
+      document.getElementById('price-prefix-startup').textContent = showFromPrefix ? 'Fra ' : '';
+      document.getElementById('price-prefix-monthly').textContent = showFromPrefix ? 'Fra ' : '';
+      
+    }
+
+    function renderPriceBreakdown({ monthly, isRent, isOwn, hasServiceAgreement, hasElectricity }) {
+      const baseMonthly = isRent ? PRICING_CONFIG.RENT_BASE.monthly : PRICING_CONFIG.OWN_BASE.monthly;
+      const serviceMonthly = isOwn && hasServiceAgreement ? PRICING_CONFIG.SERVICE_AGREEMENT_MONTHLY : 0;
+      const electricityMonthly = hasElectricity
+        ? PRICING_CONFIG.ELECTRICITY_AGREEMENT_MONTHLY
+        : (isOwn ? 0 : PRICING_CONFIG.NO_ELECTRICITY_MONTHLY);
+      document.getElementById('digi-breakdown-base-label').textContent = isRent
+        ? 'Leje inkl. serviceaftale'
+        : 'Køb af ladeboks';
+      document.getElementById('digi-breakdown-base-monthly').textContent = baseMonthly.toLocaleString('da-DK');
+      document.getElementById('digi-breakdown-base-row').hidden = isOwn && hasElectricity;
+      document.getElementById('digi-breakdown-service-monthly').textContent = serviceMonthly.toLocaleString('da-DK');
+      document.getElementById('digi-breakdown-electricity-label').textContent = hasElectricity
+        ? 'OK El Højt Forbrug abonnement'
+        : 'Tillæg uden OK Elaftale';
+      document.getElementById('digi-breakdown-electricity-monthly').textContent = electricityMonthly.toLocaleString('da-DK');
+      document.getElementById('digi-breakdown-service-row').hidden = serviceMonthly === 0;
+      document.getElementById('digi-breakdown-electricity-row').hidden = electricityMonthly === 0;
+      document.getElementById('digi-breakdown-monthly-section').hidden = monthly === 0;
+    }
+    
+    function renderResultProduct() {
+      const isPeblar = answers.q1 === 'Peblar';
+      const image = document.getElementById('digi-result-product-image');
+      const name = document.getElementById('digi-result-product-name');
+      const manufacturer = document.getElementById('digi-result-spec-manufacturer');
+      const country = document.getElementById('digi-result-spec-country');
+      const size = document.getElementById('digi-result-spec-size');
+      const fixedCable = document.getElementById('digi-result-spec-fixed-cable');
+      const cableLength = document.getElementById('digi-result-spec-cable-length');
+      const cableLengthRow = document.getElementById('digi-result-spec-cable-length-row');
+      const connectorLabel = document.getElementById('digi-result-spec-connector-label');
+      if (!image || !name || !manufacturer || !country || !size || !fixedCable || !cableLength || !cableLengthRow || !connectorLabel) return;
+
+      image.src = isPeblar
+        ? 'https://www.ok.dk/imagevault/publishedmedia/kdl5jnnf5ze5xgdnhkpo/peblar-sort-v-g.png'
+        : 'https://www.ok.dk/imagevault/publishedmedia/ge62mn9w5obn02ll5jxx/domo-mursten.png';
+      image.alt = isPeblar ? 'Peblar-ladeboks' : 'Domo-ladeboks';
+      name.textContent = isPeblar ? 'Peblar' : 'Domo';
+      manufacturer.textContent = isPeblar ? 'Peblar' : 'Sargo';
+      country.textContent = isPeblar ? 'EU' : 'Danmark';
+      size.textContent = isPeblar ? '207 × 387 × 128 mm' : '190 × 338 × 116 mm';
+      fixedCable.textContent = isPeblar ? 'Ja' : 'Nej';
+      cableLength.textContent = isPeblar ? ((answers.qcable || '5') + ' m') : '—';
+      cableLengthRow.hidden = !isPeblar;
+      connectorLabel.textContent = isPeblar ? 'Ladestik' : 'Udtag';
+    }
+
+    function generateOrderLink() {
+      // Generate order link with all parameters including subscription
+      const baseUrl = 'https://www.ok.dk/privat/bestil/ladestander-bestillingsformular';
+      const params = new URLSearchParams();
+      
+      // Installation type
+      params.append('eksisterende-installation', answers.q2 === 'Ja' ? '1' : '2');
+      
+      // Ownership type
+      params.append('ladeboks', answers.q3.toLowerCase());
+      
+      // Cable type
+      params.append('kabel', answers.q1 === 'Peblar' ? '1' : '2');
+      
+      // Subscription parameter
+      const hasServiceAgreement = answers.q3 === 'Leje' || (answers.q3 === 'Eje' && answers.q4 === 'Ja');
+      params.append('serviceaftale', hasServiceAgreement ? '1' : '0');
+      
+      // Electricity agreement
+      if (answers.q5 === 'Ja') {
+        params.append('elaftale', '6354');
+        params.append('elaftale', '6356');
+      }
+      
+      // Source parameter (always last)
+      params.append('source', 'ladepakkeberegner');
+      
+      return `${baseUrl}?${params.toString()}`;
+    }
+
+    // SleekNote trigger - only fires once when user reaches result page
+    let sleekNoteTriggered = false;
+    function triggerSleekNoteOnResult() {
+      if (!sleekNoteTriggered) {
+        sleekNoteTriggered = true;
+        setTimeout(function(){
+          SleekNote.triggerOnClick('62b9d2b5-0614-47db-a6d2-ae34280c5f7d');
+        }, 5000);
+      }
+    }
+  </script>
+  <script>
+    /* Presentation-only Clara progress adapter. Calculator state remains authoritative. */
+    (() => {
+      const root = document.getElementById('digi-charger-calc-pakkeguide');
+      const bar = root && root.querySelector('.digi-progress-bar-pakkeguide');
+      const fill = root && root.querySelector('#progress-fill');
+      const context = root && root.querySelector('.digi-progress-context-pakkeguide');
+      if (!bar || !fill || !context) return;
+
+      const productHeading = root.querySelector('#digi-product-heading-pakkeguide');
+      const productButtons = root.querySelectorAll('.digi-product-select-pakkeguide');
+      const flowExit = root.querySelector('.digi-flow-exit-pakkeguide');
+
+      const stepNames = {
+        1: 'Ladeboks',
+        2: 'Installation',
+        3: 'Køb eller leje',
+        4: 'Serviceaftale',
+        5: 'Elaftale',
+        6: 'Brugt ladeboks',
+        result: 'Din pris'
+      };
+
+      const renderClaraProgress = () => {
+        const flowSteps = getVisibleStepOrder().filter(step => step !== 1);
+        const total = flowSteps.length;
+        const activeIndex = Math.max(0, flowSteps.indexOf(currentStep));
+        const active = activeIndex + 1;
+        root.querySelectorAll('.digi-step-slide-pakkeguide').forEach(slide => {
+          slide.classList.toggle('is-active-pakkeguide', String(slide.getAttribute('data-step')) === String(currentStep));
+        });
+        bar.style.setProperty('--digi-progress-count', total);
+        bar.querySelectorAll('.digi-progress-segment-pakkeguide').forEach(node => node.remove());
+        flowSteps.forEach((step, index) => {
+          const segment = document.createElement('button');
+          segment.type = 'button';
+          segment.className = 'digi-progress-segment-pakkeguide';
+          segment.setAttribute('aria-label', 'Gå til trin ' + (index + 1) + ': ' + stepNames[step]);
+          if (index <= activeIndex) segment.classList.add('is-complete');
+          const isVisited = (index + 2) <= maxVisitedStep;
+          if (isVisited && index !== activeIndex) {
+            segment.classList.add('is-available');
+            segment.addEventListener('click', () => {
+              showStep(step);
+              const question = root.querySelector('.digi-step-slide-pakkeguide[data-step="' + step + '"] .digi-input-section-pakkeguide > p:first-child');
+              if (question) {
+                question.setAttribute('tabindex', '-1');
+                question.focus();
+              }
+            });
+          } else {
+            segment.disabled = true;
+          }
+          if (index === activeIndex) segment.setAttribute('aria-current', 'step');
+          bar.insertBefore(segment, fill);
+        });
+        context.innerHTML = '<strong>' + active + ' af ' + total + '</strong><span>- Beregn prisen på din ladeboks</span>';
+      };
+
+      new MutationObserver(renderClaraProgress).observe(fill, { attributes: true, attributeFilter: ['style'] });
+
+      root.querySelectorAll('.digi-product-cable-price-pakkeguide').forEach(node => {
+        node.textContent = formatPriceWithKr(PRICING_CONFIG.CABLE_UPGRADE_STARTUP);
+      });
+
+      productButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const value = button.getAttribute('data-charger-value');
+          const input = root.querySelector('input[name="q1"][value="' + value + '"]');
+          if (!input) return;
+          productButtons.forEach(node => { node.disabled = true; });
+          delete answers.qcable;
+          root.querySelectorAll('input[name="qcable"]').forEach(node => { node.checked = false; });
+          updateOwnershipContinueState();
+          input.checked = true;
+          handleAnswer(1);
+          continueFromStep(1);
+          window.setTimeout(() => {
+            root.classList.add('digi-flow-started');
+            productButtons.forEach(node => { node.disabled = false; });
+            const flowHeader = root.querySelector('.digi-flow-header-content-pakkeguide');
+            if (flowHeader) flowHeader.scrollIntoView({ block: 'start' });
+            const question = root.querySelector('.digi-step-slide-pakkeguide[data-step="' + currentStep + '"] .digi-input-section-pakkeguide > p:first-child');
+            if (question) {
+              question.setAttribute('tabindex', '-1');
+              question.focus({ preventScroll: true });
+            }
+          }, 320);
+        });
+      });
+
+      const exitFlow = () => {
+        showStep(1);
+        root.classList.remove('digi-flow-started');
+        if (productHeading) {
+          productHeading.setAttribute('tabindex', '-1');
+          productHeading.focus();
+        }
+      };
+
+      if (flowExit) flowExit.addEventListener('click', exitFlow);
+
+      renderClaraProgress();
+    })();
+  </script>
+</section>
